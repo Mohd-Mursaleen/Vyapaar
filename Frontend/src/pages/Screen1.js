@@ -16,33 +16,6 @@ const Screen1 = () => {
       </div>
       <div className="w-[456px] flex flex-col items-start justify-start pt-2 px-0 pb-0 box-border max-w-full text-13xl text-gray-300 font-poppins">
         <div className="self-stretch flex flex-col items-start justify-start gap-[80px] max-w-full mq450:gap-[40px]">
-          <div className="flex flex-row items-end justify-start py-0 pr-9 pl-0 gap-[8px] mq675:flex-wrap">
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-          </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[16px] text-gray-200">
               <h1 className="m-0 self-stretch relative text-inherit leading-[36px] font-bold font-inherit mq450:text-lgi mq450:leading-[22px] mq800:text-7xl mq800:leading-[29px]">
@@ -56,7 +29,7 @@ const Screen1 = () => {
             </div>
             <div className="self-stretch rounded-lg bg-whitesmoke flex flex-row items-start justify-start p-4 box-border gap-[16px] max-w-full text-smi mq450:flex-wrap">
               <img
-                className="h-6 w-6 relative overflow-hidden shrink-0"
+                className="relative w-6 h-6 overflow-hidden shrink-0"
                 loading="lazy"
                 alt=""
                 src="/icon.svg"
@@ -66,7 +39,7 @@ const Screen1 = () => {
                 personal data is securely protected.
               </div>
               <img
-                className="h-6 w-6 relative overflow-hidden shrink-0"
+                className="relative w-6 h-6 overflow-hidden shrink-0"
                 loading="lazy"
                 alt=""
                 src="/icon-1.svg"
@@ -77,14 +50,14 @@ const Screen1 = () => {
                 Enter your phone number
               </div>
               <div className="self-stretch flex flex-col items-start justify-start gap-[8px] max-w-full text-lg font-roboto">
-                <div className="self-stretch flex flex-row items-start justify-start py-0 px-4 box-border max-w-full">
+                <div className="box-border flex flex-row items-start self-stretch justify-start max-w-full px-4 py-0">
                   <div className="flex-1 flex flex-row items-start justify-start gap-[16px] max-w-full mq450:flex-wrap">
                     <div className="relative leading-[28px] inline-block min-w-[32px] whitespace-nowrap">
                       +91
                     </div>
-                    <div className="flex flex-col items-start justify-start py-0 pr-2 pl-0">
+                    <div className="flex flex-col items-start justify-start py-0 pl-0 pr-2">
                       <img
-                        className="w-6 h-6 relative overflow-hidden shrink-0"
+                        className="relative w-6 h-6 overflow-hidden shrink-0"
                         loading="lazy"
                         alt=""
                         src="/icon-2.svg"
@@ -112,7 +85,7 @@ const Screen1 = () => {
         </div>
       </div>
       <img
-        className="h-12 w-12 relative overflow-hidden shrink-0"
+        className="relative w-12 h-12 overflow-hidden opacity-0 shrink-0"
         loading="lazy"
         alt=""
         src="/icon-3.svg"

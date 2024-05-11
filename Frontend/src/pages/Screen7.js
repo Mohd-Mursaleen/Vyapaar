@@ -16,35 +16,6 @@ const Screen31 = () => {
       </div>
       <div className="h-[1262px] w-[848px] relative max-w-full text-13xl font-poppins mq750:h-auto mq750:min-h-[1262]">
         <div className="absolute top-[8px] left-[0px] w-[456px] flex flex-col items-start justify-start gap-[32px] max-w-full">
-          <div className="flex flex-row items-start justify-start pt-0 px-0 pb-12 box-border max-w-full">
-            <div className="flex flex-row items-end justify-start py-0 pr-9 pl-0 box-border gap-[8px] max-w-full mq750:flex-wrap">
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-              <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-                <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-              </div>
-              <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq750:w-full" />
-            </div>
-          </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
             <h1 className="m-0 self-stretch relative text-inherit leading-[36px] font-bold font-inherit mq450:text-lgi mq450:leading-[22px] mq1025:text-7xl mq1025:leading-[29px]">
               Credit Requirements
@@ -121,7 +92,7 @@ const Screen31 = () => {
                       type="text"
                     />
                     <img
-                      className="h-6 w-6 relative overflow-hidden shrink-0"
+                      className="relative w-6 h-6 overflow-hidden shrink-0"
                       alt=""
                       src="/icon-2.svg"
                     />
@@ -129,7 +100,7 @@ const Screen31 = () => {
                   <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gainsboro-200" />
                 </div>
               </div>
-              <div className="self-stretch flex flex-col items-start justify-start max-w-full text-lg text-textcolor-default font-body-small">
+              <div className="flex flex-col items-start self-stretch justify-start max-w-full text-lg text-textcolor-default font-body-small">
                 <div className="self-stretch flex flex-col items-center justify-center gap-[12px] max-w-full">
                   <div className="self-stretch flex flex-row items-center justify-start gap-[6px] max-w-full mq450:flex-wrap">
                     <div className="flex-1 flex flex-col items-start justify-start gap-[2px] min-w-[235px] max-w-full">
@@ -151,7 +122,7 @@ const Screen31 = () => {
                         src="/filter-list.svg"
                       />
                       <img
-                        className="h-6 w-6 relative overflow-hidden shrink-0"
+                        className="relative w-6 h-6 overflow-hidden shrink-0"
                         loading="lazy"
                         alt=""
                         src="/close.svg"
@@ -159,7 +130,7 @@ const Screen31 = () => {
                       <div className="h-[22px] hidden flex-row items-center justify-center text-center text-xs">
                         <div className="self-stretch bg-bgcolor-lightprimary flex flex-row items-center justify-center py-spacing-xxxs px-spacing-xxs gap-[4px]">
                           <img
-                            className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                            className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                             alt=""
                             src="/info.svg"
                           />
@@ -167,7 +138,7 @@ const Screen31 = () => {
                             Badges
                           </div>
                           <img
-                            className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                            className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                             alt=""
                             src="/info.svg"
                           />
@@ -181,7 +152,7 @@ const Screen31 = () => {
                     </div>
                   </div>
                   <img
-                    className="self-stretch relative max-w-full overflow-hidden max-h-full hidden"
+                    className="relative self-stretch hidden max-w-full max-h-full overflow-hidden"
                     alt=""
                     src="/divider1.svg"
                   />
@@ -197,16 +168,16 @@ const Screen31 = () => {
             </div>
             <div className="flex flex-row items-start justify-start gap-[8px] text-base text-black font-roboto">
               <img
-                className="h-8 w-8 relative rounded-md overflow-hidden shrink-0"
+                className="relative w-8 h-8 overflow-hidden rounded-md shrink-0"
                 alt=""
                 src="/buttoniconghostoff.svg"
               />
-              <div className="flex flex-col items-start justify-start pt-1 px-0 pb-0">
+              <div className="flex flex-col items-start justify-start px-0 pt-1 pb-0">
                 <div className="relative leading-[24px] inline-block min-w-[83px]">
                   I agree with
                 </div>
               </div>
-              <div className="flex flex-col items-start justify-start pt-1 px-0 pb-0 text-royalblue">
+              <div className="flex flex-col items-start justify-start px-0 pt-1 pb-0 text-royalblue">
                 <div className="relative leading-[24px] font-medium inline-block min-w-[94px]">
                   Terms of use
                 </div>
@@ -225,7 +196,7 @@ const Screen31 = () => {
           </div>
         </div>
         <img
-          className="absolute top-[0px] left-[800px] w-12 h-12 overflow-hidden"
+          className="absolute top-[0px] left-[800px] w-12 h-12 overflow-hidden opacity-0"
           loading="lazy"
           alt=""
           src="/icon-3.svg"

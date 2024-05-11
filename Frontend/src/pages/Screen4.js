@@ -15,33 +15,6 @@ const Screen4 = () => {
       </div>
       <div className="w-[456px] flex flex-col items-start justify-start pt-2 px-0 pb-0 box-border max-w-full text-13xl font-poppins">
         <div className="self-stretch flex flex-col items-start justify-start gap-[80px] max-w-full mq450:gap-[40px]">
-          <div className="flex flex-row items-end justify-start py-0 pr-9 pl-0 gap-[8px] mq675:flex-wrap">
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-          </div>
           <div className="self-stretch flex flex-col items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
               <h1 className="m-0 self-stretch relative text-inherit leading-[36px] font-bold font-inherit mq450:text-lgi mq450:leading-[22px] mq800:text-7xl mq800:leading-[29px]">
@@ -95,7 +68,7 @@ const Screen4 = () => {
                 Address *
               </div>
               <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[15px] box-border gap-[8px] max-w-full">
-                <div className="self-stretch flex flex-row items-start justify-start py-0 px-4 box-border max-w-full">
+                <div className="box-border flex flex-row items-start self-stretch justify-start max-w-full px-4 py-0">
                   <input
                     className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[216px] max-w-full p-0"
                     placeholder="47 W 13th St"
@@ -116,7 +89,7 @@ const Screen4 = () => {
                       type="text"
                     />
                     <img
-                      className="h-6 w-6 relative overflow-hidden shrink-0"
+                      className="relative w-6 h-6 overflow-hidden shrink-0"
                       alt=""
                       src="/icon-2.svg"
                     />
@@ -140,7 +113,7 @@ const Screen4 = () => {
                         <div className="relative leading-[28px] inline-block min-w-[51px]">
                           10011
                         </div>
-                        <div className="h-6 w-px relative bg-dimgray" />
+                        <div className="relative w-px h-6 bg-dimgray" />
                       </div>
                       <div className="flex flex-row items-start justify-start gap-[4px]">
                         <input
@@ -148,7 +121,7 @@ const Screen4 = () => {
                           placeholder="10011"
                           type="text"
                         />
-                        <div className="h-6 w-px relative bg-dimgray" />
+                        <div className="relative w-px h-6 bg-dimgray" />
                       </div>
                     </div>
                   </div>
@@ -173,7 +146,7 @@ const Screen4 = () => {
         </div>
       </div>
       <img
-        className="h-12 w-12 relative overflow-hidden shrink-0"
+        className="relative w-12 h-12 overflow-hidden shrink-0 opacity-0"
         loading="lazy"
         alt=""
         src="/icon-3.svg"

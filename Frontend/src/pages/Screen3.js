@@ -16,33 +16,6 @@ const Screen3 = () => {
       </div>
       <div className="w-[456px] flex flex-col items-start justify-start pt-2 px-0 pb-0 box-border max-w-full">
         <div className="self-stretch flex flex-col items-start justify-start gap-[80px] max-w-full mq450:gap-[40px]">
-          <div className="flex flex-row items-end justify-start py-0 pr-9 pl-0 gap-[8px] mq675:flex-wrap">
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-royalblue mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-            <div className="w-10 flex flex-col items-start justify-end pt-0 px-0 pb-[5px] box-border">
-              <div className="w-[41px] h-px relative box-border border-t-[1px] border-solid border-silver-200" />
-            </div>
-            <div className="h-3 w-3 relative rounded-[50%] bg-bgcolor-light box-border border-[0px] border-solid border-silver-200 mq675:w-full" />
-          </div>
           <form className="m-0 self-stretch flex flex-col items-start justify-start gap-[32px] max-w-full mq450:gap-[16px]">
             <div className="self-stretch flex flex-col items-start justify-start gap-[16px]">
               <h1 className="m-0 self-stretch relative text-13xl leading-[36px] font-bold font-poppins text-gray-200 text-left mq450:text-lgi mq450:leading-[22px] mq800:text-7xl mq800:leading-[29px]">
@@ -55,7 +28,7 @@ const Screen3 = () => {
             </div>
             <div className="self-stretch rounded-lg box-border flex flex-col items-center justify-center py-0.5 px-0 max-w-full border-[1px] border-solid border-gainsboro-200">
               <div className="self-stretch rounded-radi-xxl flex flex-col items-start justify-center py-[4.5px] px-6 box-border gap-[4px] max-w-full">
-                <div className="self-stretch flex flex-col items-start justify-start max-w-full">
+                <div className="flex flex-col items-start self-stretch justify-start max-w-full">
                   <div className="self-stretch flex flex-col items-center justify-center gap-[12px] max-w-full">
                     <div className="self-stretch flex flex-row items-center justify-start gap-[6px] max-w-full mq450:flex-wrap">
                       <div className="flex-1 flex flex-col items-start justify-start gap-[2px] min-w-[246px] max-w-full">
@@ -79,7 +52,7 @@ const Screen3 = () => {
                           src="/filter-list.svg"
                         />
                         <img
-                          className="h-6 w-6 relative overflow-hidden shrink-0"
+                          className="relative w-6 h-6 overflow-hidden shrink-0"
                           loading="lazy"
                           alt=""
                           src="/close.svg"
@@ -87,7 +60,7 @@ const Screen3 = () => {
                         <div className="h-[22px] hidden flex-row items-center justify-center">
                           <div className="self-stretch bg-bgcolor-lightprimary flex flex-row items-center justify-center py-spacing-xxxs px-spacing-xxs gap-[4px]">
                             <img
-                              className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                              className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                               alt=""
                               src="/info.svg"
                             />
@@ -95,7 +68,7 @@ const Screen3 = () => {
                               Badges
                             </div>
                             <img
-                              className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                              className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                               alt=""
                               src="/info.svg"
                             />
@@ -109,7 +82,7 @@ const Screen3 = () => {
                       </div>
                     </div>
                     <img
-                      className="self-stretch relative max-w-full overflow-hidden max-h-full hidden"
+                      className="relative self-stretch hidden max-w-full max-h-full overflow-hidden"
                       alt=""
                       src="/divider.svg"
                     />
@@ -128,7 +101,7 @@ const Screen3 = () => {
             </div>
             <div className="self-stretch rounded-lg box-border flex flex-col items-center justify-center py-0.5 px-0 max-w-full border-[1px] border-solid border-gainsboro-200">
               <div className="self-stretch rounded-radi-xxl flex flex-col items-start justify-center py-[4.5px] px-6 box-border gap-[4px] max-w-full">
-                <div className="self-stretch flex flex-col items-start justify-start max-w-full">
+                <div className="flex flex-col items-start self-stretch justify-start max-w-full">
                   <div className="self-stretch flex flex-col items-center justify-center gap-[12px] max-w-full">
                     <div className="self-stretch flex flex-row items-center justify-start gap-[6px] max-w-full mq450:flex-wrap">
                       <div className="flex-1 flex flex-col items-start justify-start gap-[2px] min-w-[246px] max-w-full">
@@ -152,7 +125,7 @@ const Screen3 = () => {
                           src="/filter-list.svg"
                         />
                         <img
-                          className="h-6 w-6 relative overflow-hidden shrink-0"
+                          className="relative w-6 h-6 overflow-hidden shrink-0"
                           loading="lazy"
                           alt=""
                           src="/close.svg"
@@ -160,7 +133,7 @@ const Screen3 = () => {
                         <div className="h-[22px] hidden flex-row items-center justify-center">
                           <div className="self-stretch bg-bgcolor-lightprimary flex flex-row items-center justify-center py-spacing-xxxs px-spacing-xxs gap-[4px]">
                             <img
-                              className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                              className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                               alt=""
                               src="/info.svg"
                             />
@@ -168,7 +141,7 @@ const Screen3 = () => {
                               Badges
                             </div>
                             <img
-                              className="h-4 w-4 relative overflow-hidden shrink-0 hidden"
+                              className="relative hidden w-4 h-4 overflow-hidden shrink-0"
                               alt=""
                               src="/info.svg"
                             />
@@ -182,7 +155,7 @@ const Screen3 = () => {
                       </div>
                     </div>
                     <img
-                      className="self-stretch relative max-w-full overflow-hidden max-h-full hidden"
+                      className="relative self-stretch hidden max-w-full max-h-full overflow-hidden"
                       alt=""
                       src="/divider.svg"
                     />
@@ -206,7 +179,7 @@ const Screen3 = () => {
         </div>
       </div>
       <img
-        className="h-12 w-12 relative overflow-hidden shrink-0"
+        className="relative w-12 h-12 overflow-hidden opacity-0 shrink-0"
         loading="lazy"
         alt=""
         src="/icon-3.svg"
