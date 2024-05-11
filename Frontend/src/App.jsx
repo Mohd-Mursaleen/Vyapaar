@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
   useNavigationType,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import Screen1 from "./pages/Screen1";
 import Screen2 from "./pages/Screen2";
@@ -82,8 +82,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Screen1 />} />
       <Route path="/screen2" element={<Screen2 />} />
-      <Route path="/screen4" element={<Screen3 />} />
-      <Route path="/screen3" element={<Screen4 />} />
+      <Route path="/screen3" element={<Screen3 />} />
+      <Route path="/screen4" element={<Screen4 />} />
       <Route path="/screen5" element={<Screen5 />} />
       <Route path="/screen6" element={<Screen6 />} />
       <Route path="/screen7" element={<Screen7 />} />

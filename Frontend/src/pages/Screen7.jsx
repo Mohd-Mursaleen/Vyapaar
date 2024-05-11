@@ -2,26 +2,34 @@ import FrameComponent2 from "../components/FrameComponent2";
 
 const Screen7 = () => {
   return (
-    <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[142px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq1125:flex-wrap mq750:pl-11 mq750:pr-[22px] mq750:box-border">
-      <div className="flex flex-row items-start justify-start gap-[12px]">
-        <img
-          className="h-6 w-6 relative min-h-[24px]"
-          loading="lazy"
-          alt=""
-          src="/logo.svg"
-        />
-        <div className="flex flex-col items-start justify-start pt-[3px] px-0 pb-0">
-          <b className="relative tracking-[1px] leading-[18px] uppercase inline-block min-w-[80px]">
-            vYapaar
-          </b>
+    // Outermost container to cover the entire viewport height and center content vertically
+    <div className="flex flex-row w-full py-12 px-12 w-full  bg-bgcolor-light">
+      <div className="flex flex-row items-start justify-between w-full  ">
+        {" "}
+        {/* max-w-md to control the width of the form */}
+        <div className="flex items-center  mb-4">
+          {" "}
+          {/* Company logo and name container */}
+          <img
+            className="h-6 w-6" // Logo image
+            loading="lazy"
+            alt="Company Logo"
+            src="/logo.svg"
+          />
+          <div>
+            <b className="text-base uppercase tracking-wide leading-none">
+              vYapaar
+            </b>
+          </div>
         </div>
-      </div>
-      <div className="h-[1262px] w-[848px] relative max-w-full mq750:h-auto mq750:min-h-[1262]">
-        <FrameComponent2 />
+        <div className="max-w-lg">
+          <FrameComponent2 />{" "}
+        </div>
+        {/* Form component centered and width controlled by max-w-md */}
         <img
-          className="absolute top-[0px] left-[800px] w-12 h-12 overflow-hidden"
+          className="mt-4 w-12 h-12 opacity-0" // Additional icon
           loading="lazy"
-          alt=""
+          alt="Icon"
           src="/icon-3.svg"
         />
       </div>
