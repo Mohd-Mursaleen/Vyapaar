@@ -14,7 +14,9 @@ const businessSchema = new Schema({
 
     default: false,
   },
-  accountHolderName: {},
+  accountHolderName: {
+    type: String,
+  },
 
   isMSMERegistered: {
     type: String,
@@ -65,7 +67,10 @@ const businessSchema = new Schema({
   ifscCode: {
     type: String,
   },
+  loanApproved: {
+    type: Boolean,
+  },
 });
 
 const Business = mongoose.model("Business", businessSchema);
-module.exports = Business;
+export default Business;
