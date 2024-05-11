@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { DataContext } from "../App";
+import { Navigate, useNavigate } from "react-router-dom";
 const Screen3 = () => {
+  const { data, setData } = useContext(DataContext);
   const [bName, setBName] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
   const [revenue, setRevenue] = useState("");
   const [gst, setGST] = useState("");
+  const navigateTo = useNavigate();
   const postData = async (e) => {
     e.preventDefault();
-    const postData = async (e) => {
-      e.preventDefault();
 
-      console.log("Done!");
-      setData(phone);
-      navigateTo("/screen2");
-    };
+    console.log("Done!");
+    setData({
+      nameOfBusiness: bName,
+      businessAddress: address,
+      gstNumber: gst,
+      city,
+      yearlyRevenue: revenue,
+    });
+    console.log(data);
+    navigateTo("/screen4");
   };
+
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[370px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -162,7 +170,10 @@ const Screen3 = () => {
                 </div>
               </div>
             </div>
-            <button className="cursor-pointer [border:none] py-3 px-6 bg-royalblue w-32 rounded flex flex-row items-start justify-start box-border gap-[8px] hover:bg-cornflowerblue">
+            <button
+              className="cursor-pointer [border:none] py-3 px-6 bg-royalblue w-32 rounded flex flex-row items-start justify-start box-border gap-[8px] hover:bg-cornflowerblue"
+              onClick={postData}
+            >
               <img
                 className="h-6 w-6 relative overflow-hidden shrink-0 min-h-[24px]"
                 alt=""

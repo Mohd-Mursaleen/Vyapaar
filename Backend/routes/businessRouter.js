@@ -1,9 +1,15 @@
 import express from "express";
-import { post, patch, get, getAll } from "../controllers/businessController.js"; // Adjust the path as necessary
+import {
+  post,
+  patch,
+  get,
+  getAll,
+  fileToLink,
+} from "../controllers/businessController.js"; // Adjust the path as necessary
 import {
   adharFrontPageOCR,
   adharBackPageOCR,
-  panCardOCR
+  panCardOCR,
 } from "../controllers/ocrController.js"; // Adjust the path as necessary
 import {
   creditReport,
@@ -27,6 +33,7 @@ router.get("/business/:id", get);
 
 // Route to get all businesses
 router.get("/businesses", getAll);
+router.post("/convert", fileToLink);
 
 // OCR Router
 

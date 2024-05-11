@@ -1,8 +1,65 @@
-import { useState } from "react";
 import { DataContext } from "../App";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 const Screen4 = () => {
-  const [bName, setBName] = useState("");
+  const navigateTo = useNavigate();
+  const { data, setData } = useContext(DataContext);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent form from submitting traditionally which causes page reload
+
+    try {
+      // Log and set data; assume setData is synchronous and just setting React state
+      console.log("Submitting data...");
+      setData({
+        panCardURL: panCard,
+        aadharCardFront: aadharCardFront,
+        aadharCardBack: aadharCardBack,
+      });
+
+      // Here we assume you might have some asynchronous operation like API call
+      // For example, let's assume you send this data to a backend server
+      // await api.sendData({ panCardURL, aadharCardFront, aadharCardBack });
+
+      // If everything succeeds, navigate to the next screen
+      console.log("Navigation to next screen...");
+      navigateTo("/screen5");
+    } catch (error) {
+      // Handle errors that might have occurred during set data or navigation
+      console.error("Failed to process the form submission:", error);
+      // Optionally set some state to show error message on UI
+    }
+  };
+
+  console.log(data);
+  const uploadGetLink = async (name) => {
+    try {
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file); // 'file' is the key expected on the server side
+
+      const resp = await axios.post(
+        "http://localhost:5001/api/convert",
+        formData, // Send the form data
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
+          },
+        }
+      );
+      name(resp.data.url);
+      console.log(resp.data); // Log the response data from the server
+    } catch (err) {
+      console.error(err); // Log the error if something goes wrong
+    }
+  };
+
+  const [aadharCardFront, setAadharCardFront] = useState("");
+  const [aadharCardBack, setAadharCardBack] = useState("");
+  const [panCard, setPanCard] = useState("");
+  console.log(data);
+  // console.log(aadharCardFront);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[493px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -95,10 +152,16 @@ const Screen4 = () => {
                 <input
                   className="self-stretch h-[84px] rounded-radi-mlg bg-bgcolor-light box-border flex flex-col items-center justify-center py-3 px-spacing-lg border-[1px] border-dashed border-strokecolor-primary"
                   type="file"
+                  onChange={() => {
+                    uploadGetLink(setAadharCardFront);
+                  }}
                 />
                 <input
                   className="self-stretch rounded-radi-mlg bg-bgcolor-light flex flex-col items-center justify-center py-2.5 px-[23px] border-[1px] border-dashed border-strokecolor-primary"
                   type="file"
+                  onChange={() => {
+                    uploadGetLink(setAadharCardBack);
+                  }}
                 />
                 <div className="self-stretch h-5 relative text-sm leading-[20px] font-body-small text-textcolor-secdefault text-left inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">{`Only support .jpg, .png `}</div>
               </div>
@@ -112,8 +175,8 @@ const Screen4 = () => {
                         <b className="self-stretch relative text-lg tracking-[-0.2px] leading-[26px] font-body-small text-textcolor-default text-left">
                           Upload Pan Card
                         </b>
-                        <div className="self-stretch h-5 relative text-sm leading-[20px] font-body-small text-textcolor-secdefault text-left inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                          Upload Both Front and Back Side
+                        <div className="self-stretch relative text-lg tracking-[-0.2px] leading-[26px] font-body-small text-textcolor-default text-left">
+                          Upload Front
                         </div>
                       </div>
                       <div className="flex flex-row items-center justify-start gap-[6px]">
@@ -168,15 +231,18 @@ const Screen4 = () => {
                 <input
                   className="self-stretch rounded-radi-mlg bg-bgcolor-light flex flex-col items-center justify-center py-2.5 px-[23px] border-[1px] border-dashed border-strokecolor-primary"
                   type="file"
+                  onChange={() => {
+                    uploadGetLink(setPanCard);
+                  }}
                 />
-                <input
-                  className="self-stretch rounded-radi-mlg bg-bgcolor-light flex flex-col items-center justify-center py-2.5 px-[23px] border-[1px] border-dashed border-strokecolor-primary"
-                  type="file"
-                />
+
                 <div className="self-stretch h-5 relative text-sm leading-[20px] font-body-small text-textcolor-secdefault text-left inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">{`Only support .jpg, .png `}</div>
               </div>
             </div>
-            <button className="cursor-pointer [border:none] py-3 px-8 bg-royalblue rounded flex flex-row items-center justify-center whitespace-nowrap hover:bg-cornflowerblue">
+            <button
+              className="cursor-pointer [border:none] py-3 px-8 bg-royalblue rounded flex flex-row items-center justify-center whitespace-nowrap hover:bg-cornflowerblue"
+              onClick={handleSubmit}
+            >
               <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-bgcolor-light text-center inline-block min-w-[36px]">{`Next `}</div>
             </button>
           </form>

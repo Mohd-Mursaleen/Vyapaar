@@ -1,17 +1,16 @@
 import { useState, useContext } from "react";
 import { DataContext } from "../App";
-import axios from "axios";
+
 import { Navigate, useNavigate } from "react-router-dom";
 const Screen1 = () => {
   const [phone, setPhone] = useState("");
   const navigateTo = useNavigate();
-  const { setData } = useContext(DataContext);
+  const { data, setData } = useContext(DataContext);
   const postData = async (e) => {
     e.preventDefault();
 
     console.log("Done!");
-    setData(phone);
-
+    setData({ phoneNumber: phone });
     navigateTo("/screen2");
   };
   return (

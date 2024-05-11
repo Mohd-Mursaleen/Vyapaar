@@ -15,18 +15,32 @@ import Screen7 from "./pages/Screen7";
 import Screen8 from "./pages/Screen8";
 import React, { createContext, useState } from "react";
 
-export const DataContext = createContext();
+export const DataContext = createContext({
+  phone: "",
+  confirmCode: "",
+  id: "",
+  nameOfBusiness: "",
+  address: "",
+  city: "",
+  businessAddress: "",
+  gstNumber: "",
+  yearlyRevenue: "",
+});
 
 export function DataProvider({ children }) {
   const [data, setData] = useState({
-    phone: "",
+    phoneNumber: "",
     confirmCode: "",
     id: "",
     nameOfBusiness: "",
     address: "",
+    city: "",
     businessAddress: "",
     gstNumber: "",
     yearlyRevenue: "",
+    panCardURL: "",
+    aadharCardFront: "",
+    aadharCardBack: "",
   }); // Example of a more structured initial state
 
   return (
