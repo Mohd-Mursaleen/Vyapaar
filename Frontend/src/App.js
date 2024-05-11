@@ -3,12 +3,12 @@ import {
   Routes,
   Route,
   useNavigationType,
-  useLocation
+  useLocation,
 } from "react-router-dom";
 import Screen1 from "./pages/Screen1";
-import Screen4 from "./pages/Screen4";
 import Screen2 from "./pages/Screen2";
 import Screen3 from "./pages/Screen3";
+import Screen4 from "./pages/Screen4";
 import Screen5 from "./pages/Screen5";
 import Screen6 from "./pages/Screen6";
 import Screen7 from "./pages/Screen7";
@@ -34,15 +34,15 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/screen3":
-        title = "";
-        metaDescription = "";
-        break;
       case "/screen2":
         title = "";
         metaDescription = "";
         break;
       case "/screen4":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/screen3":
         title = "";
         metaDescription = "";
         break;
@@ -81,9 +81,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Screen1 />} />
-      <Route path="/screen3" element={<Screen4 />} />
       <Route path="/screen2" element={<Screen2 />} />
       <Route path="/screen4" element={<Screen3 />} />
+      <Route path="/screen3" element={<Screen4 />} />
       <Route path="/screen5" element={<Screen5 />} />
       <Route path="/screen6" element={<Screen6 />} />
       <Route path="/screen7" element={<Screen7 />} />

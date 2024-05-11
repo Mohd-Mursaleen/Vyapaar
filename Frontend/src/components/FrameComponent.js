@@ -1,4 +1,4 @@
-const FrameComponent = () => {
+const FrameComponent = ({ phone }) => {
   return (
     <div className="self-stretch flex flex-col items-start justify-start gap-[32px] max-w-full text-left text-13xl text-gray-300 font-poppins mq450:gap-[16px]">
       <div className="self-stretch flex flex-col items-start justify-start gap-[16px] text-gray-200">
@@ -51,6 +51,7 @@ const FrameComponent = () => {
                 className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[172px] p-0"
                 placeholder="8968033002"
                 type="text"
+                value={phone}
               />
             </div>
           </div>

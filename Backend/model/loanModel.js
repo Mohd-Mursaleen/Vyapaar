@@ -58,7 +58,7 @@ const businessSchema = new Schema({
   },
   accountHolderName: {
     type: String,
-    required: [true, "Account holder name is required"],
+
     trim: true,
   },
   accountNumber: {
