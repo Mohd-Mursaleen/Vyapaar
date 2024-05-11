@@ -1,4 +1,15 @@
+import { DataContext } from "../App";
+import axios from "axios";
+import { useState, useContext } from "react";
 const Screen11 = () => {
+  const { data, setData } = useContext(DataContext);
+  const [name, setName] = useState("");
+  const handleSubmit = () => {
+    e.preventDefault();
+
+    navigateTo("/screen6");
+  };
+  console.log(data);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[236px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -38,29 +49,22 @@ const Screen11 = () => {
               </div>
               <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[15px] gap-[16px]">
                 <div className="self-stretch relative leading-[20px]">
-                  First name
+                  Full Name
                 </div>
                 <div className="self-stretch flex flex-col items-start justify-start gap-[8px]">
                   <input
                     className="w-full [border:none] [outline:none] bg-[transparent] self-stretch h-7 flex flex-row items-start justify-start py-0 px-4 box-border font-roboto text-lg text-gray-300 min-w-[235px]"
                     placeholder="Alexander"
                     type="text"
+                    onChange={(e) => {
+                      setBName(e.target.value);
+                      console.log("yes");
+                    }}
                   />
                   <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gainsboro-200" />
                 </div>
               </div>
-              <div className="self-stretch relative leading-[20px]">
-                Second name
-              </div>
-              <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-[15px] box-border gap-[8px] max-w-full">
-                <input
-                  className="w-full [border:none] [outline:none] bg-[transparent] self-stretch h-7 flex flex-row items-start justify-start py-0 px-4 box-border font-roboto text-lg text-gray-300 min-w-[235px]"
-                  placeholder="Jackson"
-                  type="text"
-                />
 
-                <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gainsboro-200" />
-              </div>
               <div className="self-stretch relative leading-[20px]">
                 Date of Birth
               </div>

@@ -2,17 +2,6 @@ import Business from "../model/loanModel.js";
 import cloudinary from "cloudinary";
 
 export const post = async (req, res) => {
-  const { files } = req;
-
-  const formData = new FormData();
-
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i];
-
-    formData.append("files", file);
-  }
-  console.log("Req", req.files);
-
   const {
     nameOfBusiness,
     phoneNumber,
@@ -37,22 +26,9 @@ export const post = async (req, res) => {
   } = req.body;
 
   // Check if the files are included in the request
-  const { panCardFront, aadharCardFront, aadharCardBack } = req.files;
 
   try {
     // Upload the PAN card image
-    const cloudinaryResponsePan = await cloudinary.uploader.upload(
-      panCardFront.tempFilePath
-    );
-
-    // Upload the Aadhar card image
-    const cloudinaryResponseAdhaarFront = await cloudinary.uploader.upload(
-      aadharCardFront.tempFilePath
-    );
-
-    const cloudinaryResponseAdhaarBack = await cloudinary.uploader.upload(
-      aadharCardBack.tempFilePath
-    );
 
     // Create a new business entry
     const newBusiness = new Business({
@@ -61,10 +37,10 @@ export const post = async (req, res) => {
       isVerified,
       accountHolderName,
       isMSMERegistered,
-      panCardURL,
+      panCardFront,
       panCardNumber,
-      aadharCardFrontURL: cloudinaryResponseAdhaarFront.secure_url,
-      aadharCardBackURL: cloudinaryResponseAdhaarBack.secure_url,
+      aadharCardFrontURL,
+      aadharCardBackURL,
       aadharCardNumber,
       address,
       businessAddress,
@@ -134,5 +110,38 @@ export const getAll = async (req, res) => {
     res.status(200).send(businesses); // Send the retrieved businesses
   } catch (error) {
     res.status(500).send("Error fetching businesses: " + error.message);
+  }
+};
+export const fileToLink = async (req, res) => {
+  // Check if files are uploaded
+  if (!req.files || !req.files.file) {
+    console.log("No file uploaded");
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+
+  const { file } = req.files;
+
+  // Optionally, check the file type if needed
+  if (!file.mimetype.startsWith("image/")) {
+    console.log("Unsupported file type");
+    return res.status(400).json({ error: "Unsupported file type" });
+  }
+
+  try {
+    console.log("Uploading file to Cloudinary...");
+    const cloudinaryResponse = await cloudinary.uploader.upload(
+      file.tempFilePath
+    );
+
+    // Log the successful Cloudinary response
+    // console.log("File uploaded to Cloudinary", cloudinaryResponse);
+
+    return res.json({
+      message: "File uploaded successfully",
+      url: cloudinaryResponse.secure_url,
+    });
+  } catch (error) {
+    console.error("Failed to upload file", error);
+    return res.status(500).json({ error: "Failed to upload file" });
   }
 };
