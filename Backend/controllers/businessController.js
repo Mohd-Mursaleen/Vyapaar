@@ -1,9 +1,7 @@
 import Business from "../model/loanModel.js";
 import cloudinary from "cloudinary";
+
 export const post = async (req, res) => {
-  if (!req.files || Object.keys(req.files).length == 0) {
-    return res.status(400).send("Files misssing");
-  }
   const { files } = req;
 
   const formData = new FormData();
@@ -14,7 +12,7 @@ export const post = async (req, res) => {
     formData.append("files", file);
   }
   console.log("Req", req.files);
-  return res.status(400).send(formData);
+
   const {
     nameOfBusiness,
     phoneNumber,
@@ -33,29 +31,27 @@ export const post = async (req, res) => {
     accountNumber,
     ifscCode,
     loanApproved,
-    aadharCardNumber, // Assuming you meant to destructure this from req.body
+    aadharCardNumber // Assuming you meant to destructure this from req.body
   } = req.body;
 
   // Check if the files are included in the request
-  const { panCardURL, aadharCardURL } = req.files;
-
-  if (!panCardURL || !aadharCardURL) {
-    return res
-      .status(400)
-      .send("Both PAN card and Aadhar card files are required.");
-  }
+  const { panCardFront, aadharCardFront, aadharCardBack } = req.files;
 
   try {
     // Upload the PAN card image
     const cloudinaryResponsePan = await cloudinary.uploader.upload(
-      panCardURL.tempFilePath
+      panCardFront.tempFilePath
     );
 
     // Upload the Aadhar card image
-    const cloudinaryResponseAdhaar = await cloudinary.uploader.upload(
-      aadharCardURL.tempFilePath
+    const cloudinaryResponseAdhaarFront = await cloudinary.uploader.upload(
+      aadharCardFront.tempFilePath
     );
 
+    const cloudinaryResponseAdhaarBack = await cloudinary.uploader.upload(
+      aadharCardBack.tempFilePath
+    );
+    
     // Create a new business entry
     const newBusiness = new Business({
       nameOfBusiness,
@@ -65,7 +61,8 @@ export const post = async (req, res) => {
       isMSMERegistered,
       panCardURL: cloudinaryResponsePan.secure_url,
       panCardNumber,
-      aadharCardURL: cloudinaryResponseAdhaar.secure_url,
+      aadharCardFrontURL: cloudinaryResponseAdhaarFront.secure_url,
+      aadharCardBackURL: cloudinaryResponseAdhaarBack.secure_url,
       aadharCardNumber,
       address,
       businessAddress,
@@ -78,8 +75,9 @@ export const post = async (req, res) => {
       accountHolderName,
       accountNumber,
       ifscCode,
-      loanApproved,
+      loanApproved
     });
+
 
     await newBusiness.save(); // Save the new business to the database
     res.status(201).send("Business added successfully");
@@ -97,7 +95,7 @@ export const patch = async (req, res) => {
     // Find the business by ID and update it with the provided data
     const updatedBusiness = await Business.findByIdAndUpdate(id, update, {
       new: true, // Return the updated document
-      runValidators: true, // Ensure the update adheres to the model validations
+      runValidators: true // Ensure the update adheres to the model validations
     });
 
     if (!updatedBusiness) {
