@@ -1,9 +1,9 @@
-const Screen8 = () => {
+const Screen4 = () => {
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[730px] pr-11 pl-[88px] box-border leading-[normal] tracking-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-center justify-start gap-[12px]">
         <img
-          className="relative w-6 h-6"
+          className="h-6 w-6 relative"
           loading="lazy"
           alt=""
           src="/logo.svg"
@@ -32,7 +32,7 @@ const Screen8 = () => {
       </div>
       <div className="flex flex-row items-center justify-center">
         <img
-          className="relative w-12 h-12 overflow-hidden shrink-0"
+          className="h-12 w-12 relative overflow-hidden shrink-0"
           loading="lazy"
           alt=""
           src="/icon-3.svg"
@@ -42,4 +42,4 @@ const Screen8 = () => {
   );
 };
 
-export default Screen8;
+export default Screen4;

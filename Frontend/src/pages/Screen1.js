@@ -49,7 +49,7 @@ const Screen1 = () => {
         </div>
       </div>
       <img
-        className="h-12 w-12 relative overflow-hidden shrink-0 opacity-0"
+        className="h-12 w-12 relative overflow-hidden shrink-0"
         loading="lazy"
         alt=""
         src="/icon-3.svg"
