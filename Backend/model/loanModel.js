@@ -6,7 +6,7 @@ const businessSchema = new Schema({
   nameOfBusiness: {
     type: String,
   },
-  phone: {
+  phoneNumber: {
     type: String,
   },
   isVerified: {
@@ -28,7 +28,10 @@ const businessSchema = new Schema({
   panCardNumber: {
     type: String,
   },
-  aadharCardURL: {
+  aadharCardFrontURL: {
+    type: String,
+  },
+  aadharCardBackURL: {
     type: String,
   },
   address: {

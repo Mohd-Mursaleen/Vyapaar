@@ -1,6 +1,18 @@
 import Business from "../model/loanModel.js";
 import cloudinary from "cloudinary";
+
 export const post = async (req, res) => {
+  const { files } = req;
+
+  const formData = new FormData();
+
+  for (let i = 0; i < files.length; i++) {
+    let file = files[i];
+
+    formData.append("files", file);
+  }
+  console.log("Req", req.files);
+
   const {
     nameOfBusiness,
     phoneNumber,
@@ -25,24 +37,22 @@ export const post = async (req, res) => {
   } = req.body;
 
   // Check if the files are included in the request
-  // const { panCardURL, aadharCardURL } = req.files;
-
-  // if (!panCardURL || !aadharCardURL) {
-  //   return res
-  //     .status(400)
-  //     .send("Both PAN card and Aadhar card files are required.");
-  // }
+  const { panCardFront, aadharCardFront, aadharCardBack } = req.files;
 
   try {
     // Upload the PAN card image
-    // const cloudinaryResponsePan = await cloudinary.uploader.upload(
-    //   panCardURL.tempFilePath
-    // );
+    const cloudinaryResponsePan = await cloudinary.uploader.upload(
+      panCardFront.tempFilePath
+    );
 
     // Upload the Aadhar card image
-    // const cloudinaryResponseAdhaar = await cloudinary.uploader.upload(
-    //   aadharCardURL.tempFilePath
-    // );
+    const cloudinaryResponseAdhaarFront = await cloudinary.uploader.upload(
+      aadharCardFront.tempFilePath
+    );
+
+    const cloudinaryResponseAdhaarBack = await cloudinary.uploader.upload(
+      aadharCardBack.tempFilePath
+    );
 
     // Create a new business entry
     const newBusiness = new Business({
@@ -53,7 +63,8 @@ export const post = async (req, res) => {
       isMSMERegistered,
       panCardURL,
       panCardNumber,
-      aadharCardURL,
+      aadharCardFrontURL: cloudinaryResponseAdhaarFront.secure_url,
+      aadharCardBackURL: cloudinaryResponseAdhaarBack.secure_url,
       aadharCardNumber,
       address,
       businessAddress,
