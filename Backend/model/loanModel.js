@@ -4,72 +4,75 @@ const Schema = mongoose.Schema;
 
 const businessSchema = new Schema({
   nameOfBusiness: {
-    type: String,
+    type: String
   },
   phoneNumber: {
-    type: String,
+    type: String
   },
   isVerified: {
     type: Boolean,
 
-    default: false,
+    default: false
   },
   accountHolderName: {
-    type: String,
+    type: String
   },
 
   isMSMERegistered: {
     type: String,
-    enum: ["Yes", "No"],
+    enum: ["Yes", "No"]
   },
   panCardURL: {
-    type: String,
+    type: String
   },
   panCardNumber: {
-    type: String,
+    type: String
   },
-  aadharCardURL: {
-    type: String,
+  aadharCardFrontURL: {
+    type: String
+  },
+  aadharCardBackURL: {
+    type: String
   },
   address: {
-    type: String,
+    type: String
   },
   businessAddress: {
-    type: String,
+    type: String
   },
   haveGST: {
     type: String,
-    enum: ["Yes", "No"],
+    enum: ["Yes", "No"]
   },
   gstNumber: {
-    type: String,
+    type: String
   },
   businessPlan: {
-    type: String,
+    type: String
   },
   messageHistory: {
-    type: Schema.Types.Mixed,
+    type: Schema.Types.Mixed
   },
   financialDocumentsURL: {
-    type: String,
+    type: String
   },
   bankStatements: {
-    type: String,
+    type: String
   },
   accountHolderName: {
     type: String,
 
-    trim: true,
+    trim: true
   },
   accountNumber: {
-    type: String,
+    type: String
   },
   ifscCode: {
-    type: String,
+    type: String
   },
   loanApproved: {
-    type: Boolean,
-  },
+    type: Boolean
+  }
 });
 
 const Business = mongoose.model("Business", businessSchema);
