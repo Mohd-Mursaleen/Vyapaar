@@ -6,7 +6,7 @@ const businessSchema = new Schema({
   nameOfBusiness: {
     type: String,
   },
-  phoneNumber: {
+  phone: {
     type: String,
   },
   isVerified: {
@@ -51,6 +51,9 @@ const businessSchema = new Schema({
     type: Schema.Types.Mixed,
   },
   financialDocumentsURL: {
+    type: String,
+  },
+  yearlyRevenue: {
     type: String,
   },
   bankStatements: {

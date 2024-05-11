@@ -9,7 +9,7 @@ async function fetchImageAsBase64(url) {
   const buffer = await response.buffer();
   return {
     base64: buffer.toString("base64"),
-    mimeType
+    mimeType,
   };
 }
 
@@ -40,9 +40,9 @@ export const adharFrontPageOCR = async (req, res) => {
       {
         inlineData: {
           data: base64,
-          mimeType: mimeType
-        }
-      }
+          mimeType: mimeType,
+        },
+      },
     ];
 
     const result = await model.generateContent([prompt, ...imageParts]);
@@ -78,9 +78,9 @@ export const adharBackPageOCR = async (req, res) => {
       {
         inlineData: {
           data: base64,
-          mimeType: mimeType
-        }
-      }
+          mimeType: mimeType,
+        },
+      },
     ];
 
     const result = await model.generateContent([prompt, ...imageParts]);
@@ -115,9 +115,9 @@ Ensure that the OCR accurately captures all relevant text and that the final JSO
       {
         inlineData: {
           data: base64,
-          mimeType: mimeType
-        }
-      }
+          mimeType: mimeType,
+        },
+      },
     ];
 
     const result = await model.generateContent([prompt, ...imageParts]);

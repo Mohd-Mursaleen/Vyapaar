@@ -1,4 +1,13 @@
+import { useLocation } from "react-router-dom";
+import { useState, useContext } from "react";
+import { DataContext } from "../App";
+import { Navigate, useNavigate } from "react-router-dom";
 const Screen2 = () => {
+  // const location = useLocation();
+  const { data } = useContext(DataContext);
+  const number = data.phone;
+  const navigateTo = useNavigate();
+  // console.log(number);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-96 pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -29,7 +38,7 @@ const Screen2 = () => {
             <div className="self-stretch rounded-lg box-border flex flex-row items-end justify-start py-3.5 px-[15px] gap-[16px] max-w-full text-lg font-roboto border-[1px] border-solid border-gainsboro-200 mq450:flex-wrap">
               <div className="flex-1 flex flex-col items-start justify-start gap-[2px] min-w-[250px] max-w-full">
                 <div className="self-stretch relative leading-[28px] whitespace-nowrap">
-                  +91 8968033002
+                  {number ? number : "+91 8968033002"}
                 </div>
                 <div className="self-stretch relative text-smi leading-[18px] font-poppins text-dimgray">
                   Number not confirmed yet
@@ -81,7 +90,12 @@ const Screen2 = () => {
                         </div>
                       </div>
                     </div>
-                    <button className="cursor-pointer py-2.5 px-[23px] bg-bgcolor-light rounded flex flex-row items-start justify-start border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100">
+                    <button
+                      className="cursor-pointer py-2.5 px-[23px] bg-bgcolor-light rounded flex flex-row items-start justify-start border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100"
+                      onClick={() => {
+                        navigateTo("/screen3");
+                      }}
+                    >
                       <div className="relative text-base leading-[24px] capitalize font-medium font-roboto text-gray-200 text-center inline-block min-w-[58px]">
                         Confirm
                       </div>

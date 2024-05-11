@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import {
   Routes,
   Route,
@@ -13,6 +13,28 @@ import Screen5 from "./pages/Screen5";
 import Screen6 from "./pages/Screen6";
 import Screen7 from "./pages/Screen7";
 import Screen8 from "./pages/Screen8";
+import React, { createContext, useState } from "react";
+
+export const DataContext = createContext();
+
+export function DataProvider({ children }) {
+  const [data, setData] = useState({
+    phone: "",
+    confirmCode: "",
+    id: "",
+    nameOfBusiness: "",
+    address: "",
+    businessAddress: "",
+    gstNumber: "",
+    yearlyRevenue: "",
+  }); // Example of a more structured initial state
+
+  return (
+    <DataContext.Provider value={{ data, setData }}>
+      {children}
+    </DataContext.Provider>
+  );
+}
 
 function App() {
   const action = useNavigationType();
@@ -79,16 +101,18 @@ function App() {
   }, [pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Screen1 />} />
-      <Route path="/screen2" element={<Screen2 />} />
-      <Route path="/screen4" element={<Screen3 />} />
-      <Route path="/screen3" element={<Screen4 />} />
-      <Route path="/screen5" element={<Screen5 />} />
-      <Route path="/screen6" element={<Screen6 />} />
-      <Route path="/screen7" element={<Screen7 />} />
-      <Route path="/screen8" element={<Screen8 />} />
-    </Routes>
+    <DataProvider>
+      <Routes>
+        <Route path="/" element={<Screen1 />} />
+        <Route path="/screen2" element={<Screen2 />} />
+        <Route path="/screen4" element={<Screen4 />} />
+        <Route path="/screen3" element={<Screen3 />} />
+        <Route path="/screen5" element={<Screen5 />} />
+        <Route path="/screen6" element={<Screen6 />} />
+        <Route path="/screen7" element={<Screen7 />} />
+        <Route path="/screen8" element={<Screen8 />} />
+      </Routes>
+    </DataProvider>
   );
 }
 export default App;

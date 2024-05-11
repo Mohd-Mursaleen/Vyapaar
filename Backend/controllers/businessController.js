@@ -1,20 +1,6 @@
 import Business from "../model/loanModel.js";
 import cloudinary from "cloudinary";
 export const post = async (req, res) => {
-  if (!req.files || Object.keys(req.files).length == 0) {
-    return res.status(400).send("Files misssing");
-  }
-  const { files } = req;
-
-  const formData = new FormData();
-
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i];
-
-    formData.append("files", file);
-  }
-  console.log("Req", req.files);
-  return res.status(400).send(formData);
   const {
     nameOfBusiness,
     phoneNumber,
@@ -23,6 +9,8 @@ export const post = async (req, res) => {
     isMSMERegistered,
     panCardNumber,
     address,
+    panCardURL,
+    aadharCardURL,
     businessAddress,
     haveGST,
     gstNumber,
@@ -37,24 +25,24 @@ export const post = async (req, res) => {
   } = req.body;
 
   // Check if the files are included in the request
-  const { panCardURL, aadharCardURL } = req.files;
+  // const { panCardURL, aadharCardURL } = req.files;
 
-  if (!panCardURL || !aadharCardURL) {
-    return res
-      .status(400)
-      .send("Both PAN card and Aadhar card files are required.");
-  }
+  // if (!panCardURL || !aadharCardURL) {
+  //   return res
+  //     .status(400)
+  //     .send("Both PAN card and Aadhar card files are required.");
+  // }
 
   try {
     // Upload the PAN card image
-    const cloudinaryResponsePan = await cloudinary.uploader.upload(
-      panCardURL.tempFilePath
-    );
+    // const cloudinaryResponsePan = await cloudinary.uploader.upload(
+    //   panCardURL.tempFilePath
+    // );
 
     // Upload the Aadhar card image
-    const cloudinaryResponseAdhaar = await cloudinary.uploader.upload(
-      aadharCardURL.tempFilePath
-    );
+    // const cloudinaryResponseAdhaar = await cloudinary.uploader.upload(
+    //   aadharCardURL.tempFilePath
+    // );
 
     // Create a new business entry
     const newBusiness = new Business({
@@ -63,9 +51,9 @@ export const post = async (req, res) => {
       isVerified,
       accountHolderName,
       isMSMERegistered,
-      panCardURL: cloudinaryResponsePan.secure_url,
+      panCardURL,
       panCardNumber,
-      aadharCardURL: cloudinaryResponseAdhaar.secure_url,
+      aadharCardURL,
       aadharCardNumber,
       address,
       businessAddress,

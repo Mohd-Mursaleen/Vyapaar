@@ -1,4 +1,19 @@
+import { useState, useContext } from "react";
+import { DataContext } from "../App";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 const Screen1 = () => {
+  const [phone, setPhone] = useState("");
+  const navigateTo = useNavigate();
+  const { setData } = useContext(DataContext);
+  const postData = async (e) => {
+    e.preventDefault();
+
+    console.log("Done!");
+    setData(phone);
+
+    navigateTo("/screen2");
+  };
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[390px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -67,6 +82,11 @@ const Screen1 = () => {
                       className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[172px] p-0"
                       placeholder="8968033002"
                       type="text"
+                      value={phone}
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                        console.log("yes");
+                      }}
                     />
                   </div>
                 </div>
@@ -76,7 +96,10 @@ const Screen1 = () => {
                 </div>
               </div>
             </div>
-            <button className="cursor-pointer py-2.5 px-[23px] bg-bgcolor-light rounded flex flex-row items-start justify-start whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100">
+            <button
+              className="cursor-pointer py-2.5 px-[23px] bg-bgcolor-light rounded flex flex-row items-start justify-start whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100 "
+              onClick={postData}
+            >
               <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-gray-200 text-center inline-block min-w-[89px]">
                 Send code
               </div>
