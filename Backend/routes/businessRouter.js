@@ -5,6 +5,14 @@ import {
   adharBackPageOCR,
   panCardOCR
 } from "../controllers/ocrController.js"; // Adjust the path as necessary
+import {
+  creditReport,
+  creditScores,
+  creditSummary,
+  gstTurnOver,
+  gstFilling,
+  bankStatement
+} from "../controllers/financialApiController.js";
 
 const router = express.Router();
 
@@ -21,8 +29,17 @@ router.get("/business/:id", get);
 router.get("/businesses", getAll);
 
 // OCR Router
-router.post("/adfront", adharFrontPageOCR);
-router.post("/adback", adharBackPageOCR);
-router.post("/pan", panCardOCR);
+
+router.post("/adharfront", adharFrontPageOCR);
+router.post("/adharback", adharBackPageOCR);
+router.post("/panCard", panCardOCR);
+
+// Financial API Endpoints
+router.post("/creditreport", creditReport);
+router.post("/creditscores", creditScores);
+router.post("/creditsummary", creditSummary);
+router.post("/gstturnOver", gstTurnOver);
+router.post("/gstfilling", gstFilling);
+router.post("/bankstatement", bankStatement);
 
 export default router;
