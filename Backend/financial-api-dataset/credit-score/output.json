@@ -1,0 +1,22 @@
+{
+  "scores": [
+    {
+      "bureau": "Experian",
+      "score": 697,
+      "credit_score_model_name": "ExperianFairIsaac",
+      "score_date": "2018-04-21"
+    },
+    {
+      "bureau": "TransUnion",
+      "score": 725,
+      "credit_score_model_name": "FICORiskScoreClassic04",
+      "score_date": "2018-04-21"
+    },
+    {
+      "bureau": "Equifax",
+      "score": 700,
+      "credit_score_model_name": "EquifaxBeacon5.0",
+      "score_date": "2018-04-21"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "code": 200,
+  "message": "Data Found Successfully !",
+  "result": {
+    "gst_estimated_total": 23758076.37,
+    "gst_filed_total": 23758076.37,
+    "pan_estimated_total": 23758076.37,
+    "pan_filed_total": 23758076.37
+  }
+}

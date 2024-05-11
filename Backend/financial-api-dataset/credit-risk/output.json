@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "message": "Data Found Successfully.",
+  "result": {
+    "data": {
+      "pan": "DHEPS7028N",
+      "mobile": "9599667779",
+      "name": "Ajay Setia",
+      "credit_score": "769",
+      "credit_report": {},
+      "credit_report_link": "https://aadhaar-kyc-docs.s3.amazonaws.com/emptra/credit_report_v2/credit_report_v2_gkrJgiyFuHxYaoiBogeA/credit_report_1710505436842023.html?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY5K3QRM5FYWPQJEB%2F20240315%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20240315T122356Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=c87c96b81c6357b42fd54de26bbd30da5fe2b2fa3c2e22b8f248dc795dfe0af6"
+    },
+    "status_code": 200,
+    "success": true,
+    "message": "Success",
+    "message_code": "success"
+  }
+}
