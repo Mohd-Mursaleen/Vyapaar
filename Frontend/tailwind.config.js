@@ -5,29 +5,29 @@ module.exports = {
     extend: {
       colors: {
         "bgcolor-light": "#fff",
-        silver: {
-          "100": "#bbbfc1",
-          "200": "#b9b9c4",
-        },
+        royalblue: "#007aff",
+        cornflowerblue: "#26a1ff",
         gainsboro: {
           "100": "#e6e6e6",
           "200": "#e2e4e5",
         },
+        dimgray: "#575f6e",
         gray: {
           "100": "#878c8f",
           "200": "#242731",
           "300": "#242426",
         },
+        darkgray: "#9a9ea5",
+        silver: {
+          "100": "#bbbfc1",
+          "200": "#b9b9c4",
+        },
         whitesmoke: "#f0f2f4",
-        dimgray: "#575f6e",
-        royalblue: "#007aff",
         black: "#000",
-        cornflowerblue: "#26a1ff",
         "textcolor-secdefault": "#6d6d6d",
         "strokecolor-primary": "#1849d6",
         "bgcolor-lightprimary": "#e7ecfc",
         "textcolor-default": "#0b0b0b",
-        darkgray: "#9a9ea5",
       },
       spacing: {
         "spacing-lg": "24px",
@@ -51,12 +51,12 @@ module.exports = {
       base: "16px",
       lg: "18px",
       sm: "14px",
-      smi: "13px",
+      xs: "12px",
+      xl: "20px",
       "13xl": "32px",
       lgi: "19px",
       "7xl": "26px",
-      xs: "12px",
-      xl: "20px",
+      smi: "13px",
       inherit: "inherit",
     },
     screens: {

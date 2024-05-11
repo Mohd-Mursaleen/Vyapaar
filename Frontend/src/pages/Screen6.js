@@ -1,6 +1,6 @@
-import Step from "../components/Step";
+import Step from "../components/Step1";
 
-const Screen6 = () => {
+const Screen2 = () => {
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[385px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -49,7 +49,7 @@ const Screen6 = () => {
         </div>
       </div>
       <img
-        className="relative w-12 h-12 overflow-hidden shrink-0"
+        className="h-12 w-12 relative overflow-hidden shrink-0"
         loading="lazy"
         alt=""
         src="/icon-3.svg"
@@ -58,4 +58,4 @@ const Screen6 = () => {
   );
 };
 
-export default Screen6;
+export default Screen2;

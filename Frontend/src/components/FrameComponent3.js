@@ -1,4 +1,4 @@
-import Notification1 from "./Notification1";
+import Notification1 from "./Notification11";
 
 const FrameComponent = () => {
   return (
