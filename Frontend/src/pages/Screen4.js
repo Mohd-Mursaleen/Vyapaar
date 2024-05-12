@@ -25,7 +25,7 @@ const Screen4 = () => {
         panCardNumber,
         aadharCardNumber,
         aadharCardFrontURL,
-        aadharCardBackURL,
+        aadharCardBackURL
       }));
 
       // Here we assume you might have some asynchronous operation like API call
@@ -55,15 +55,15 @@ const Screen4 = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data",
-          },
+            "Content-Type": "multipart/form-data"
+          }
         }
       );
       toast.update(toastId, {
         render: "Document Uploaded",
         type: "success",
         isLoading: false,
-        autoClose: 5000,
+        autoClose: 5000
       });
 
       if (name === "setAadharCardFrontURL") {
@@ -78,9 +78,9 @@ const Screen4 = () => {
             {
               withCredentials: true,
               headers: {
-                "Content-Type": "application/json", // Change to 'application/json' if you are sending JSON data
+                "Content-Type": "application/json" // Change to 'application/json' if you are sending JSON data
               },
-              timeout: 600000,
+              timeout: 600000
             }
           );
           let aadharCardNumber = result.data.result.aadharCardNumber;
@@ -92,7 +92,7 @@ const Screen4 = () => {
             render: "Aadhar Card Verified",
             type: "success",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 5000
           });
         })();
 
@@ -117,16 +117,16 @@ const Screen4 = () => {
             {
               withCredentials: true,
               headers: {
-                "Content-Type": "application/json", // Change to 'application/json' if you are sending JSON data
+                "Content-Type": "application/json" // Change to 'application/json' if you are sending JSON data
               },
-              timeout: 600000,
+              timeout: 600000
             }
           );
           toast.update(toastId, {
             render: "PanCard Verified",
             type: "success",
             isLoading: false,
-            autoClose: 5000,
+            autoClose: 5000
           });
           let panCardNumber = result.data.result.panCard;
           setPanCardNumber(panCardNumber);

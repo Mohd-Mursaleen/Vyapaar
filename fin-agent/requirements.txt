@@ -5,3 +5,5 @@ python-dotenv
 crewai[tools]
 pypdf2
 streamlit
+flask
+flask_cors
