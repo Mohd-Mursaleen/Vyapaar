@@ -19,7 +19,7 @@ const Screen31 = () => {
         ...prevData,
         businessPlan: bPlan,
         accountNumber: bankAccNo,
-        ifscCode: ifsc
+        ifscCode: ifsc,
       }));
       const {
         phoneNumber,
@@ -39,7 +39,7 @@ const Screen31 = () => {
         financialDocumentsURL,
         ifscCode,
         accountNumber,
-        businessPlan
+        businessPlan,
       } = data;
       await axios
         .post(
@@ -62,11 +62,11 @@ const Screen31 = () => {
             accountNumber,
             businessPlan,
             panCardNumber,
-            aadharCardNumber
+            aadharCardNumber,
           },
           {
             withCredentials: true,
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
           }
         )
         .then((res) => {
@@ -96,8 +96,8 @@ const Screen31 = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data" // This might be automatically set by Axios
-          }
+            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
+          },
         }
       );
       setBPlan(resp.data.url);
@@ -105,7 +105,7 @@ const Screen31 = () => {
         render: "Document Uploaded",
         type: "success",
         isLoading: false,
-        autoClose: 5000
+        autoClose: 5000,
       });
       console.log(resp.data); // Log the response data from the server
     } catch (err) {
@@ -265,7 +265,7 @@ const Screen31 = () => {
                 onChange={uploadGetLink}
               />
               <div className="self-stretch h-5 relative leading-[20px] font-body-small text-textcolor-secdefault inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                Only support pdf
+                JPEG, Pdf supported
               </div>
             </div>
             <div className="flex flex-row items-start justify-start gap-[8px] text-base text-black font-roboto">
