@@ -1,14 +1,39 @@
 import { DataContext } from "../App";
-import axios from "axios";
+
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const Screen11 = () => {
+  const navigateTo = useNavigate();
   const { data, setData } = useContext(DataContext);
   const [name, setName] = useState("");
-  const handleSubmit = () => {
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    navigateTo("/screen6");
+    try {
+      // Log and set data; assume setData is synchronous and just setting React state
+      console.log("Submitting data...");
+      setData((prevData) => ({
+        ...prevData,
+        accountHolderName: name,
+        gender,
+        dob,
+      }));
+      // Here we assume you might have some asynchronous operation like API call
+      // For example, let's assume you send this data to a backend server
+      // await api.sendData({ panCardURL, aadharCardFront, aadharCardBack });
+
+      // If everything succeeds, navigate to the next screen
+      console.log("Navigation to next screen...");
+      navigateTo("/screen6");
+    } catch (error) {
+      // Handle errors that might have occurred during set data or navigation
+      console.error("Failed to process the form submission:", error);
+      // Optionally set some state to show error message on UI
+    }
   };
+
   console.log(data);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[236px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
@@ -57,8 +82,7 @@ const Screen11 = () => {
                     placeholder="Alexander"
                     type="text"
                     onChange={(e) => {
-                      setBName(e.target.value);
-                      console.log("yes");
+                      setName(e.target.value);
                     }}
                   />
                   <div className="self-stretch h-px relative box-border border-t-[1px] border-solid border-gainsboro-200" />
@@ -71,21 +95,46 @@ const Screen11 = () => {
               <input
                 className="self-stretch px-4 py-2 border-[1px] border-solid border-gainsboro-200 rounded text-gray-200 bg-transparent"
                 type="date"
+                onChange={(e) => {
+                  setDob(e.target.value);
+                  console.log("yes");
+                }}
               />
               <div className="self-stretch relative leading-[20px] mt-4">
                 Gender
               </div>
               <div className="flex items-center gap-4">
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="gender" value="male" />
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    onChange={(e) => {
+                      setGender("Male");
+                    }}
+                  />
                   Male
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="gender" value="female" />
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    onChange={(e) => {
+                      setGender("Female");
+                    }}
+                  />
                   Female
                 </label>
                 <label className="flex items-center gap-2">
-                  <input type="radio" name="gender" value="other" />
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="other"
+                    onChange={(e) => {
+                      setGender("Other");
+                    }}
+                  />
                   Other
                 </label>
               </div>
@@ -121,7 +170,10 @@ const Screen11 = () => {
               </div>
             </div>
             <div className="flex flex-row items-start justify-start gap-[32px] mq450:gap-[16px]">
-              <button className="cursor-pointer py-2.5 pr-[23px] pl-[31px] bg-royalblue rounded flex flex-row items-start justify-start gap-[8px] whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-cornflowerblue hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100">
+              <button
+                className="cursor-pointer py-2.5 pr-[23px] pl-[31px] bg-royalblue rounded flex flex-row items-start justify-start gap-[8px] whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-cornflowerblue hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100"
+                onClick={handleSubmit}
+              >
                 <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-bgcolor-light text-center inline-block min-w-[63px]">
                   Go next
                 </div>
@@ -130,16 +182,6 @@ const Screen11 = () => {
                   alt=""
                   src="/icon-4.svg"
                 />
-              </button>
-              <button className="cursor-pointer py-2.5 pr-[23px] pl-[31px] bg-bgcolor-light rounded flex flex-row items-start justify-start gap-[8px] border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100">
-                <img
-                  className="h-6 w-6 relative overflow-hidden shrink-0 object-contain min-h-[24px]"
-                  alt=""
-                  src="/icon-5.svg"
-                />
-                <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-gray-200 text-center inline-block min-w-[40px]">
-                  Back
-                </div>
               </button>
             </div>
           </div>

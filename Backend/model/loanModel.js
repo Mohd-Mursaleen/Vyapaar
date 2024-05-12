@@ -28,6 +28,9 @@ const businessSchema = new Schema({
   panCardNumber: {
     type: String,
   },
+  gender: {
+    type: String,
+  },
   aadharCardFrontURL: {
     type: String,
   },
@@ -37,13 +40,16 @@ const businessSchema = new Schema({
   address: {
     type: String,
   },
+  city: {
+    type: String,
+  },
   businessAddress: {
     type: String,
   },
-  haveGST: {
+  dob: {
     type: String,
-    enum: ["Yes", "No"],
   },
+
   gstNumber: {
     type: String,
   },

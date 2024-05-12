@@ -1,4 +1,8 @@
+import { DataContext } from "../App";
+import { useState, useContext } from "react";
 const Screen4 = () => {
+  const { data, setData } = useContext(DataContext);
+  console.log(data);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[730px] pr-11 pl-[88px] box-border leading-[normal] tracking-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-center justify-start gap-[12px]">
@@ -19,13 +23,13 @@ const Screen4 = () => {
               Application Review Underway
             </h1>
             <div className="self-stretch relative text-base leading-[22px] font-light font-roboto text-dimgray">
-              Thank you, [Applicant’s Name], for submitting your application. We
-              are now processing the information you provided regarding
-              [Business Name]. Our review typically takes about 15 minutes. Once
-              complete, we will notify you via message regarding the next steps.
-              Should you have any questions in the meantime, please do not
-              hesitate to contact us. We appreciate your patience and look
-              forward to assisting you further.
+              Thank you, {data.accountHolderName}, for submitting your
+              application. We are now processing the information you provided
+              regarding {data.nameOfBusiness}. Our review typically takes about
+              15 minutes. Once complete, we will notify you via message
+              regarding the next steps. Should you have any questions in the
+              meantime, please do not hesitate to contact us. We appreciate your
+              patience and look forward to assisting you further.
             </div>
           </div>
         </div>

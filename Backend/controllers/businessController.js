@@ -11,7 +11,8 @@ export const post = async (req, res) => {
     panCardNumber,
     address,
     panCardURL,
-    aadharCardURL,
+    aadharCardFrontURL,
+    aadharCardBackURL,
     businessAddress,
     haveGST,
     gstNumber,
@@ -37,7 +38,7 @@ export const post = async (req, res) => {
       isVerified,
       accountHolderName,
       isMSMERegistered,
-      panCardFront,
+      panCardURL,
       panCardNumber,
       aadharCardFrontURL,
       aadharCardBackURL,
@@ -121,20 +122,27 @@ export const fileToLink = async (req, res) => {
 
   const { file } = req.files;
 
-  // Optionally, check the file type if needed
-  if (!file.mimetype.startsWith("image/")) {
-    console.log("Unsupported file type");
+  // Check the file type; accept both images and PDFs
+  if (
+    !file.mimetype.startsWith("image/") &&
+    file.mimetype !== "application/pdf"
+  ) {
+    console.log("Unsupported file type:", file.mimetype);
     return res.status(400).json({ error: "Unsupported file type" });
   }
 
   try {
     console.log("Uploading file to Cloudinary...");
+    // Cloudinary can store different types of files including images and PDFs
     const cloudinaryResponse = await cloudinary.uploader.upload(
-      file.tempFilePath
+      file.tempFilePath,
+      {
+        resource_type: file.mimetype.startsWith("image/") ? "image" : "raw",
+      }
     );
 
     // Log the successful Cloudinary response
-    // console.log("File uploaded to Cloudinary", cloudinaryResponse);
+    console.log("File uploaded to Cloudinary", cloudinaryResponse.url);
 
     return res.json({
       message: "File uploaded successfully",
