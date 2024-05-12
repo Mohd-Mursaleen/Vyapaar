@@ -11,11 +11,12 @@ const Screen4 = () => {
     try {
       // Log and set data; assume setData is synchronous and just setting React state
       console.log("Submitting data...");
-      setData({
+      setData((prevUrls) => ({
+        ...prevUrls,
         panCardURL: panCard,
-        aadharCardFront: aadharCardFront,
-        aadharCardBack: aadharCardBack,
-      });
+        aadharCardFrontURL: aadharCardFront,
+        aadharCardBackURL: aadharCardBack,
+      }));
 
       // Here we assume you might have some asynchronous operation like API call
       // For example, let's assume you send this data to a backend server

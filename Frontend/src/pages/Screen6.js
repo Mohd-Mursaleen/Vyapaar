@@ -1,4 +1,60 @@
+import { DataContext } from "../App";
+import axios from "axios";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Screen21 = () => {
+  const navigateTo = useNavigate();
+  const [bankStatement, setBankStatement] = useState("");
+  const { data, setData } = useContext(DataContext);
+  const uploadGetLink = async (event) => {
+    try {
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file); // 'file' is the key expected on the server side
+
+      const resp = await axios.post(
+        "http://localhost:5001/api/convert",
+        formData, // Send the form data
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
+          },
+        }
+      );
+      setBankStatement(resp.data.url);
+      console.log(resp); // Log the response data from the server
+    } catch (err) {
+      console.error(err); // Log the error if something goes wrong
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent form from submitting traditionally which causes page reload
+
+    try {
+      // Log and set data; assume setData is synchronous and just setting React state
+      console.log("Submitting data...");
+      setData((prevUrls) => ({
+        ...prevUrls,
+        financialDocumentsURL: bankStatement,
+      }));
+
+      // Here we assume you might have some asynchronous operation like API call
+      // For example, let's assume you send this data to a backend server
+      // await api.sendData({ panCardURL, aadharCardFront, aadharCardBack });
+
+      // If everything succeeds, navigate to the next screen
+      console.log("Navigation to next screen...");
+      console.log(data);
+      navigateTo("/screen7");
+    } catch (error) {
+      // Handle errors that might have occurred during set data or navigation
+      console.error("Failed to process the form submission:", error);
+      // Optionally set some state to show error message on UI
+    }
+  };
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-[385px] pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
       <div className="flex flex-row items-start justify-start gap-[12px]">
@@ -92,13 +148,17 @@ const Screen21 = () => {
                 <input
                   className="self-stretch h-[84px] rounded-radi-mlg bg-bgcolor-light box-border flex flex-col items-center justify-center py-3 px-spacing-lg border-[1px] border-dashed border-strokecolor-primary"
                   type="file"
+                  onChange={uploadGetLink}
                 />
                 <div className="self-stretch h-5 relative text-sm leading-[20px] text-textcolor-secdefault inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
                   Only support pdf
                 </div>
               </div>
             </div>
-            <button className="cursor-pointer py-2.5 pr-[23px] pl-[31px] bg-bgcolor-light rounded flex flex-row items-center justify-center gap-[8px] whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100">
+            <button
+              className="cursor-pointer py-2.5 pr-[23px] pl-[31px] bg-bgcolor-light rounded flex flex-row items-center justify-center gap-[8px] whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100"
+              onClick={handleSubmit}
+            >
               <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-gray-200 text-center inline-block min-w-[63px]">
                 Go next
               </div>

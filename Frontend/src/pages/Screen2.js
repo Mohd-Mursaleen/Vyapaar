@@ -1,11 +1,10 @@
-import { useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { DataContext } from "../App";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Screen2 = () => {
   // const location = useLocation();
   const { data } = useContext(DataContext);
-  const number = data.phone;
+  const number = data.phoneNumber;
   const navigateTo = useNavigate();
   // console.log(number);
   return (

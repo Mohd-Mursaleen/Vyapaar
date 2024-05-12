@@ -1,21 +1,21 @@
 import { useState, useContext } from "react";
 import { DataContext } from "../App";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Screen3 = () => {
   const { data, setData } = useContext(DataContext);
   const [bName, setBName] = useState("");
   const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
+  const [bAddress, setBAddress] = useState("");
   const [revenue, setRevenue] = useState("");
   const [gst, setGST] = useState("");
   const navigateTo = useNavigate();
-  const postData = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Done!");
     setData({
       nameOfBusiness: bName,
-      businessAddress: address,
+      businessAddress: bAddress,
       gstNumber: gst,
       city,
       yearlyRevenue: revenue,
@@ -71,7 +71,6 @@ const Screen3 = () => {
                   type="text"
                   onChange={(e) => {
                     setBName(e.target.value);
-                    console.log("yes");
                   }}
                 />
               </div>
@@ -93,7 +92,6 @@ const Screen3 = () => {
                   type="text"
                   onChange={(e) => {
                     setGST(e.target.value);
-                    console.log("yes");
                   }}
                 />
               </div>
@@ -107,8 +105,7 @@ const Screen3 = () => {
                     placeholder="47 W 13th St"
                     type="text"
                     onChange={(e) => {
-                      setAddress(e.target.value);
-                      console.log("yes");
+                      setBAddress(e.target.value);
                     }}
                   />
                 </div>
@@ -126,7 +123,6 @@ const Screen3 = () => {
                       type="text"
                       onChange={(e) => {
                         setCity(e.target.value);
-                        console.log("yes");
                       }}
                     />
                     <img
@@ -160,7 +156,6 @@ const Screen3 = () => {
                           type="text"
                           onChange={(e) => {
                             setRevenue(e.target.value);
-                            console.log("yes");
                           }}
                         />
                         <div className="relative w-px h-6 bg-dimgray" />
@@ -172,7 +167,7 @@ const Screen3 = () => {
             </div>
             <button
               className="cursor-pointer [border:none] py-3 px-6 bg-royalblue w-32 rounded flex flex-row items-start justify-start box-border gap-[8px] hover:bg-cornflowerblue"
-              onClick={postData}
+              onClick={handleSubmit}
             >
               <img
                 className="h-6 w-6 relative overflow-hidden shrink-0 min-h-[24px]"

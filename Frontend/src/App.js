@@ -39,9 +39,16 @@ export function DataProvider({ children }) {
     gstNumber: "",
     yearlyRevenue: "",
     panCardURL: "",
-    aadharCardFront: "",
-    aadharCardBack: "",
-  }); // Example of a more structured initial state
+    aadharCardFrontURL: "",
+    aadharCardBackURL: "",
+    accountHolderName: "",
+    gender: "",
+    dob: "",
+    financialDocumentsURL: "",
+    ifscCode: "",
+    accountNumber: "",
+    businessPlan: "",
+  }); // Example of a more: structured initial state
 
   return (
     <DataContext.Provider value={{ data, setData }}>

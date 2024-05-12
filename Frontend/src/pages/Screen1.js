@@ -5,8 +5,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Screen1 = () => {
   const [phone, setPhone] = useState("");
   const navigateTo = useNavigate();
-  const { data, setData } = useContext(DataContext);
-  const postData = async (e) => {
+  const { setData } = useContext(DataContext);
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log("Done!");
@@ -84,7 +84,6 @@ const Screen1 = () => {
                       value={phone}
                       onChange={(e) => {
                         setPhone(e.target.value);
-                        console.log("yes");
                       }}
                     />
                   </div>
@@ -97,7 +96,7 @@ const Screen1 = () => {
             </div>
             <button
               className="cursor-pointer py-2.5 px-[23px] bg-bgcolor-light rounded flex flex-row items-start justify-start whitespace-nowrap border-[1px] border-solid border-silver-100 hover:bg-gainsboro-100 hover:box-border hover:border-[1px] hover:border-solid hover:border-gray-100 "
-              onClick={postData}
+              onClick={handleSubmit}
             >
               <div className="relative text-base leading-[24px] capitalize font-medium font-poppins text-gray-200 text-center inline-block min-w-[89px]">
                 Send code
