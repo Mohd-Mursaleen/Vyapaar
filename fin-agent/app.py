@@ -65,20 +65,18 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/analyze_plan", methods=["POST"])
+@app.route("/analyze_plan", methods=["GET"])
 def analyze_plan():
-    if "business_plan" not in request.files:
-        return jsonify({"error": "No business plan file part"}), 400
-    plan_file = request.files["business_plan"]
-
-    if plan_file:
+    file_path = "pdf/Business_Plan.pdf"
+    if os.path.exists(file_path):
         try:
-            response = process_business_plan_pdf(plan_file)
-            return jsonify({"result": response})
+            with open(file_path, "rb") as plan_file:
+                response = process_business_plan_pdf(plan_file)
+                return jsonify({"result": response})
         except Exception as e:
             return jsonify({"error": str(e)}), 500
     else:
-        return jsonify({"error": "Invalid input, missing business plan"}), 400
+        return jsonify({"error": "Business plan file not found"}), 404
 
 
 @app.route("/financial_risk_analysis", methods=["POST"])
