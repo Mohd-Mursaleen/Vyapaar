@@ -28,6 +28,9 @@ const businessSchema = new Schema({
   panCardNumber: {
     type: String,
   },
+  aadharCardNumber: {
+    type: String,
+  },
   gender: {
     type: String,
   },
