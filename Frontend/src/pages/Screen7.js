@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { DataContext } from "../App";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const Screen31 = () => {
   const navigateTo = useNavigate();
@@ -83,6 +84,7 @@ const Screen31 = () => {
     }
   };
   const uploadGetLink = async (event) => {
+    const toastId = toast.loading("Uploading Documents...");
     try {
       const file = event.target.files[0];
       const formData = new FormData();
@@ -99,6 +101,12 @@ const Screen31 = () => {
         }
       );
       setBPlan(resp.data.url);
+      toast.update(toastId, {
+        render: "Document Uploaded",
+        type: "success",
+        isLoading: false,
+        autoClose: 5000,
+      });
       console.log(resp.data); // Log the response data from the server
     } catch (err) {
       console.error(err); // Log the error if something goes wrong

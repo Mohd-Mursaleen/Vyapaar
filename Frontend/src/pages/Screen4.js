@@ -2,6 +2,7 @@ import { DataContext } from "../App";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
+import { toast } from "react-toastify";
 const Screen4 = () => {
   const navigateTo = useNavigate();
   const [panCardNumber, setPanCardNumber] = useState("");
@@ -42,6 +43,7 @@ const Screen4 = () => {
   };
 
   const uploadGetLink = async (name) => {
+    const toastId = toast.loading("Uploading Documents...");
     try {
       const file = event.target.files[0];
       const formData = new FormData();
@@ -57,9 +59,16 @@ const Screen4 = () => {
           },
         }
       );
+      toast.update(toastId, {
+        render: "Document Uploaded",
+        type: "success",
+        isLoading: false,
+        autoClose: 5000,
+      });
 
       if (name === "setAadharCardFrontURL") {
         console.log(resp.data.url);
+        const toastId = toast.loading("Verifying Aadhar Card...");
         setAadharCardFrontURL(resp.data.url);
         let url = resp.data.url;
         (async () => {
@@ -78,7 +87,13 @@ const Screen4 = () => {
           let accountHolderName = result.data.result.name;
           setName(accountHolderName);
           setAadharCardNumber(aadharCardNumber);
-          console.log("Aadhar Done");
+
+          toast.update(toastId, {
+            render: "Aadhar Card Verified",
+            type: "success",
+            isLoading: false,
+            autoClose: 5000,
+          });
         })();
 
         // Further logic if needed
@@ -91,7 +106,9 @@ const Screen4 = () => {
       }
       if (name === "setPanCard") {
         console.log(resp.data.url);
+
         setPanCard(resp.data.url);
+        const toastId = toast.loading("Verifying PanCard...");
         let url = resp.data.url;
         (async () => {
           const result = await axios.post(
@@ -105,9 +122,14 @@ const Screen4 = () => {
               timeout: 600000,
             }
           );
+          toast.update(toastId, {
+            render: "PanCard Verified",
+            type: "success",
+            isLoading: false,
+            autoClose: 5000,
+          });
           let panCardNumber = result.data.result.panCard;
           setPanCardNumber(panCardNumber);
-          console.log("Pan Done");
         })();
       }
     } catch (err) {
