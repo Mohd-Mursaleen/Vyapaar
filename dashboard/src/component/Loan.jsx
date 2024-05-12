@@ -45,6 +45,98 @@ function BusinessDetails() {
   const [planAnalysisLoading, setPlanAnalysisLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://127.0.0.1:4048/api/business/${id}`)
+  //     .then((businessResponse) => {
+  //       setBusiness(businessResponse.data);
+  //       const gstData = JSON.stringify({
+  //         gstin: businessResponse.data.gstNumber,
+  //         panNumber: businessResponse.data.panCardNumber,
+  //         year: "2024"
+  //       });
+  //       console.log("gstData", gstData);
+
+  //       setPAN(businessResponse.data.panCardNumber);
+  //       setGst(businessResponse.data.gstNumber);
+
+  //       console.log("gstData", gstData);
+
+  //       const fetchCreditReport = axios.post(
+  //         "http://127.0.0.1:4048/api/creditreport",
+  //         {}
+  //       );
+  //       const fetchCreditScores = axios.post(
+  //         "http://127.0.0.1:4048/api/creditscores",
+  //         {}
+  //       );
+  //       const fetchCreditSummary = axios.post(
+  //         "http://127.0.0.1:4048/api/creditsummary",
+  //         {}
+  //       );
+  //       const fetchGstTurnover = axios.post(
+  //         "http://127.0.0.1:4048/api/gstturnOver",
+  //         gstData,
+  //         {
+  //           headers: { "Content-Type": "application/json" }
+  //         }
+  //       );
+
+  //       return Promise.all([
+  //         fetchCreditReport,
+  //         fetchCreditScores,
+  //         fetchCreditSummary,
+  //         fetchGstTurnover
+  //       ]);
+  //     })
+  //     .then(
+  //       ([
+  //         creditReportResponse,
+  //         creditScoresResponse,
+  //         creditSummaryResponse,
+  //         gstTurnoverResponse
+  //       ]) => {
+  //         setCreditReport(creditReportResponse.data.result.data);
+  //         setCreditScores(creditScoresResponse.data.scores);
+  //         setCreditSummary(creditSummaryResponse.data.summaries[0]);
+  //         setGstTurnover(gstTurnoverResponse.data.result);
+  //         // Initiate the financial risk analysis fetch after other data has been set
+  //         const financialRiskData = JSON.stringify({
+  //           gstin: gst, // Assuming this value comes correctly from business details
+  //           panNumber: pan
+  //         });
+  //         console.log("financialRiskData", financialRiskData);
+  //         return axios.post(
+  //           "http://127.0.0.1:5012/financial_risk_analysis",
+  //           financialRiskData,
+  //           {
+  //             headers: { "Content-Type": "application/json" }
+  //           }
+  //         );
+  //       }
+  //     )
+  //     .then((financialRiskAnalysisResponse) => {
+  //       setFinancialRiskAnalysis(financialRiskAnalysisResponse.data.result);
+  //       setFinancialRiskLoading(false); // Update loading state after fetching financial risk analysis
+  //     })
+  //     .catch((err) => {
+  //       setError("Failed to fetch data");
+  //       console.error(err);
+  //     });
+
+  //   axios
+  //     .get("http://127.0.0.1:5012/analyze_plan")
+  //     .then((response) => {
+  //       setPlanAnalysis(response.data.result);
+  //       setPlanAnalysisLoading(false); // Update loading state once the data is fetched
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching plan analysis:", error);
+  //       setError("Failed to fetch plan analysis");
+  //       setPlanAnalysisLoading(false); // Ensure loading state is updated even on error
+  //     });
+  // }, [id]);
+
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:4048/api/business/${id}`)
@@ -99,18 +191,40 @@ function BusinessDetails() {
           setCreditScores(creditScoresResponse.data.scores);
           setCreditSummary(creditSummaryResponse.data.summaries[0]);
           setGstTurnover(gstTurnoverResponse.data.result);
-          // Initiate the financial risk analysis fetch after other data has been set
+
           const financialRiskData = JSON.stringify({
-            gstin: gst, // Assuming this value comes correctly from business details
+            gstin: gst,
             panNumber: pan
           });
-          return axios.post(
-            "http://127.0.0.1:5012/financial_risk_analysis",
-            financialRiskData,
-            {
-              headers: { "Content-Type": "application/json" }
-            }
-          );
+
+          console.log("financialRiskData", financialRiskData);
+
+          // Check if gstin and panNumber are available
+          if (!gst || !pan) {
+            return axios
+              .get(`http://127.0.0.1:4048/api/business/${id}`)
+              .then((response) => {
+                const updatedFinancialRiskData = JSON.stringify({
+                  gstin: response.data.gstNumber || gst, // use fetched data if current state is null
+                  panNumber: response.data.panCardNumber || pan // use fetched data if current state is null
+                });
+                return axios.post(
+                  "http://127.0.0.1:5012/financial_risk_analysis",
+                  updatedFinancialRiskData,
+                  {
+                    headers: { "Content-Type": "application/json" }
+                  }
+                );
+              });
+          } else {
+            return axios.post(
+              "http://127.0.0.1:5012/financial_risk_analysis",
+              financialRiskData,
+              {
+                headers: { "Content-Type": "application/json" }
+              }
+            );
+          }
         }
       )
       .then((financialRiskAnalysisResponse) => {
@@ -133,7 +247,7 @@ function BusinessDetails() {
         setError("Failed to fetch plan analysis");
         setPlanAnalysisLoading(false); // Ensure loading state is updated even on error
       });
-  }, [id]);
+  }, [id, gst, pan]); // Added dependencies gst and pan
 
   if (
     !business ||
