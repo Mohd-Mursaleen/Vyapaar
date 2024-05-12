@@ -1,25 +1,14 @@
-## Installation
+# Vyapaar
 
-To install the necessary dependencies, run the following command:
+Vyapaar is an innovative solution designed to simplify the loan acquisition process for local shopkeepers. Utilizing OCR technology, Vyapaar verifies shopkeepers' documents swiftly and accurately. The core of Vyapaar is its smart AI agent, developed using Python and LangChain, which generates detailed reports based on recent transactions and credit scores to assess loan eligibility.
 
-```bash
-npm install
-```
+## Tech Stack
+- **Frontend:** React
+- **Backend:** Node.js, Express
+- **AI and Machine Learning:** Python, Pinecone
+- **Document Verification:** OCR
 
-```bash
-pip install virtualenv
-pip install -r requirements.txt
-python3 -m virtualenv venv
-source venv/bin/activate
-python app.py
-```
+Vyapaar focuses on functionality, ensuring a seamless user experience for both shopkeepers and lenders. Join us in transforming local business financing!
 
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-```bash
-chmod +x run.sh
-./run.sh
-```
+## Get Started
+Clone the repository and follow the installation instructions to set up Vyapaar locally.
