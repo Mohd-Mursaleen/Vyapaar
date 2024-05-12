@@ -81,20 +81,21 @@ const Screen3 = () => {
                 <input
                   className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[216px] max-w-full p-0"
                   type="text"
-                  placeholder="Food"
+                  placeholder="Restraurant"
                 />
               </div>
               <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-4 gap-[8px]">
                 <div className="self-stretch relative leading-[20px]">{`GST Number `}</div>
                 <input
                   className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[216px] max-w-full p-0"
-                  placeholder="214123515314"
+                  placeholder="27AAACI1681G1Z5"
                   type="text"
                   onChange={(e) => {
                     setGST(e.target.value);
                   }}
                 />
               </div>
+
               <div className="self-stretch relative leading-[20px]">
                 Address *
               </div>
@@ -102,7 +103,7 @@ const Screen3 = () => {
                 <div className="box-border flex flex-row items-start self-stretch justify-start max-w-full px-4 py-0">
                   <input
                     className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] h-7 flex-1 relative leading-[28px] text-gray-300 text-left flex items-center min-w-[216px] max-w-full p-0"
-                    placeholder="47 W 13th St"
+                    placeholder="402 Sapphire Towers, Sector 34, Gurgaon, Haryana, 122004, India"
                     type="text"
                     onChange={(e) => {
                       setBAddress(e.target.value);
@@ -119,7 +120,7 @@ const Screen3 = () => {
                   <div className="w-[376px] flex flex-row items-start justify-start gap-[16px] max-w-full">
                     <input
                       className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] flex-1 relative leading-[28px] text-darkgray text-left inline-block min-w-[150px] max-w-[calc(100%_-_40px)] p-0"
-                      placeholder="New York"
+                      placeholder="Dehradun"
                       type="text"
                       onChange={(e) => {
                         setCity(e.target.value);
@@ -152,13 +153,12 @@ const Screen3 = () => {
                       <div className="flex flex-row items-start justify-start gap-[4px]">
                         <input
                           className="[border:none] [outline:none] font-roboto text-lg bg-[transparent] relative leading-[28px] text-gray-300 text-left inline-block min-w-[51px] p-0"
-                          placeholder="in Lakhs"
+                          placeholder="lpa"
                           type="text"
                           onChange={(e) => {
                             setRevenue(e.target.value);
                           }}
                         />
-                        <div className="relative w-px h-6 bg-dimgray" />
                       </div>
                     </div>
                   </div>

@@ -20,8 +20,8 @@ const Screen21 = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data" // This might be automatically set by Axios
-          }
+            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
+          },
         }
       );
       toast.update(toastId, {
@@ -45,7 +45,7 @@ const Screen21 = () => {
       console.log("Submitting data...");
       setData((prevUrls) => ({
         ...prevUrls,
-        financialDocumentsURL: bankStatement
+        financialDocumentsURL: bankStatement,
       }));
 
       // Here we assume you might have some asynchronous operation like API call
@@ -100,7 +100,7 @@ const Screen21 = () => {
                           Upload Bank Statement
                         </b>
                         <div className="self-stretch h-5 relative text-sm leading-[20px] text-textcolor-secdefault inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                          Upload Both Front and Back Side
+                          Upload Image
                         </div>
                       </div>
                       <div className="flex flex-row items-center justify-start gap-[6px] text-base text-strokecolor-primary">
@@ -158,7 +158,7 @@ const Screen21 = () => {
                   onChange={uploadGetLink}
                 />
                 <div className="self-stretch h-5 relative text-sm leading-[20px] text-textcolor-secdefault inline-block overflow-hidden text-ellipsis whitespace-nowrap shrink-0">
-                  Only support pdf
+                  JPEG, Pdf supported
                 </div>
               </div>
             </div>

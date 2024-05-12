@@ -22,7 +22,7 @@ const Screen4 = () => {
             <h1 className="m-0 self-stretch relative text-inherit leading-[36px] font-bold font-inherit mq450:text-lgi mq450:leading-[22px] mq800:text-7xl mq800:leading-[29px]">
               Application Review Underway
             </h1>
-            <div className="self-stretch relative text-base leading-[22px] font-light font-roboto text-dimgray">
+            <div className="self-stretch relative text-base leading-[22px] font-light font-roboto text-dimgray para">
               Thank you, {data.accountHolderName}, for submitting your
               application. We are now processing the information you provided
               regarding {data.nameOfBusiness}. Our review typically takes about
@@ -31,9 +31,15 @@ const Screen4 = () => {
               meantime, please do not hesitate to contact us. We appreciate your
               patience and look forward to assisting you further.
             </div>
+            <img
+              style={{ width: "80%", marginTop: "2rem" }}
+              src="https://res.cloudinary.com/dbel1jon0/image/upload/v1715495751/placpmahbwe8roadfrqw.webp"
+              alt="Pending Sign"
+            ></img>
           </div>
         </div>
       </div>
+
       <div className="flex flex-row items-center justify-center">
         <img
           className="relative w-12 h-12 overflow-hidden opacity-0 shrink-0"

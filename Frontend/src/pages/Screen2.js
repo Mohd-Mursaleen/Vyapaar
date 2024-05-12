@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../App";
 import { useNavigate } from "react-router-dom";
 const Screen2 = () => {
@@ -6,6 +6,7 @@ const Screen2 = () => {
   const { data } = useContext(DataContext);
   const number = data.phoneNumber;
   const navigateTo = useNavigate();
+  const [code, setCode] = useState("");
   // console.log(number);
   return (
     <div className="w-full relative bg-bgcolor-light overflow-hidden flex flex-row items-start justify-between pt-11 pb-96 pr-11 pl-[88px] box-border tracking-[normal] leading-[normal] gap-[20px] text-left text-base text-gray-200 font-raleway mq450:pl-5 mq450:box-border mq800:flex-wrap mq800:pl-11 mq800:pr-[22px] mq800:box-border">
@@ -31,7 +32,7 @@ const Screen2 = () => {
               </h1>
               <div className="self-stretch relative text-base leading-[22px] font-light font-roboto text-dimgray">
                 <p className="m-0">{`Fill in the registration data. It will take a couple of minutes. `}</p>
-                <p className="m-0">All you need is a phone number and e-mail</p>
+                <p className="m-0">All you need is a phone number </p>
               </div>
             </div>
             <div className="self-stretch rounded-lg box-border flex flex-row items-end justify-start py-3.5 px-[15px] gap-[16px] max-w-full text-lg font-roboto border-[1px] border-solid border-gainsboro-200 mq450:flex-wrap">
@@ -39,9 +40,7 @@ const Screen2 = () => {
                 <div className="self-stretch relative leading-[28px] whitespace-nowrap">
                   {number ? number : "+91 8968033002"}
                 </div>
-                <div className="self-stretch relative text-smi leading-[18px] font-poppins text-dimgray">
-                  Number not confirmed yet
-                </div>
+                <div className="self-stretch relative text-smi leading-[18px] font-poppins text-dimgray"></div>
               </div>
               <img
                 className="relative w-6 h-6 overflow-hidden shrink-0"
@@ -62,6 +61,10 @@ const Screen2 = () => {
                         <input
                           className="[outline:none] [border:none] w-full h-full [background:transparent] relative z-[3]"
                           type="text"
+                          value={code}
+                          onChange={(e) => {
+                            setCode(e.target.value);
+                          }}
                         />
                         <div className="w-[1%] h-6 absolute bg-dimgray z-[1] left-[0px] top-[2px] [pointer-events:none]" />
                       </div>

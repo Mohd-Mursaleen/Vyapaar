@@ -25,7 +25,7 @@ const Screen4 = () => {
         panCardNumber,
         aadharCardNumber,
         aadharCardFrontURL,
-        aadharCardBackURL
+        aadharCardBackURL,
       }));
 
       // Here we assume you might have some asynchronous operation like API call
@@ -50,20 +50,20 @@ const Screen4 = () => {
       formData.append("file", file); // 'file' is the key expected on the server side
 
       const resp = await axios.post(
-        "http://localhost:5001/api/convert",
+        "http://localhost:4048/api/convert",
         formData,
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data"
-          }
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
       toast.update(toastId, {
         render: "Document Uploaded",
         type: "success",
         isLoading: false,
-        autoClose: 5000
+        autoClose: 5000,
       });
 
       if (name === "setAadharCardFrontURL") {
@@ -73,14 +73,14 @@ const Screen4 = () => {
         let url = resp.data.url;
         (async () => {
           const result = await axios.post(
-            "http://localhost:5001/api/adharfront",
+            "http://localhost:4048/api/adharfront",
             { url: url }, // Encapsulate the URL within an object under a key, e.g., 'url'
             {
               withCredentials: true,
               headers: {
-                "Content-Type": "application/json" // Change to 'application/json' if you are sending JSON data
+                "Content-Type": "application/json", // Change to 'application/json' if you are sending JSON data
               },
-              timeout: 600000
+              timeout: 600000,
             }
           );
           let aadharCardNumber = result.data.result.aadharCardNumber;
@@ -92,7 +92,7 @@ const Screen4 = () => {
             render: "Aadhar Card Verified",
             type: "success",
             isLoading: false,
-            autoClose: 5000
+            autoClose: 5000,
           });
         })();
 
@@ -112,21 +112,21 @@ const Screen4 = () => {
         let url = resp.data.url;
         (async () => {
           const result = await axios.post(
-            "http://localhost:5001/api/panCard",
+            "http://localhost:4048/api/panCard",
             { url: url }, // Encapsulate the URL within an object under a key, e.g., 'url'
             {
               withCredentials: true,
               headers: {
-                "Content-Type": "application/json" // Change to 'application/json' if you are sending JSON data
+                "Content-Type": "application/json", // Change to 'application/json' if you are sending JSON data
               },
-              timeout: 600000
+              timeout: 600000,
             }
           );
           toast.update(toastId, {
             render: "PanCard Verified",
             type: "success",
             isLoading: false,
-            autoClose: 5000
+            autoClose: 5000,
           });
           let panCardNumber = result.data.result.panCard;
           setPanCardNumber(panCardNumber);
@@ -162,7 +162,9 @@ const Screen4 = () => {
               </h1>
               <div className="self-stretch relative text-base leading-[22px] font-light font-roboto text-dimgray text-left">
                 <p className="m-0">{`Fill in the registration data. It will take a couple of minutes. `}</p>
-                <p className="m-0">All you need is a phone number and e-mail</p>
+                <p className="m-0">
+                  All you need is a pic of Your Aadhar and Pan Card
+                </p>
               </div>
             </div>
             <div className="self-stretch rounded-lg box-border flex flex-col items-center justify-center py-0.5 px-0 max-w-full border-[1px] border-solid border-gainsboro-200">
