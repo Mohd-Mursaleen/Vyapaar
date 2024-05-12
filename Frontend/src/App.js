@@ -48,6 +48,8 @@ export function DataProvider({ children }) {
     ifscCode: "",
     accountNumber: "",
     businessPlan: "",
+    panCardNumber: "",
+    aadharCardNumber: "",
   }); // Example of a more: structured initial state
 
   return (

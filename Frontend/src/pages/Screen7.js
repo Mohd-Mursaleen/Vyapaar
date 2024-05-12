@@ -23,7 +23,8 @@ const Screen31 = () => {
       const {
         phoneNumber,
         nameOfBusiness,
-
+        panCardNumber,
+        aadharCardNumber,
         city,
         businessAddress,
         gstNumber,
@@ -59,6 +60,8 @@ const Screen31 = () => {
             ifscCode,
             accountNumber,
             businessPlan,
+            panCardNumber,
+            aadharCardNumber,
           },
           {
             withCredentials: true,
