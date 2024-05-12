@@ -18,7 +18,7 @@ const Screen31 = () => {
         ...prevData,
         businessPlan: bPlan,
         accountNumber: bankAccNo,
-        ifscCode: ifsc,
+        ifscCode: ifsc
       }));
       const {
         phoneNumber,
@@ -37,11 +37,11 @@ const Screen31 = () => {
         financialDocumentsURL,
         ifscCode,
         accountNumber,
-        businessPlan,
+        businessPlan
       } = data;
       await axios
         .post(
-          "http://localhost:5001/api/business",
+          "http://localhost:4048/api/business",
           {
             phoneNumber,
             nameOfBusiness,
@@ -58,11 +58,11 @@ const Screen31 = () => {
             financialDocumentsURL,
             ifscCode,
             accountNumber,
-            businessPlan,
+            businessPlan
           },
           {
             withCredentials: true,
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" }
           }
         )
         .then((res) => {
@@ -86,13 +86,13 @@ const Screen31 = () => {
       formData.append("file", file); // 'file' is the key expected on the server side
 
       const resp = await axios.post(
-        "http://localhost:5001/api/convert",
+        "http://localhost:4048/api/convert",
         formData, // Send the form data
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
-          },
+            "Content-Type": "multipart/form-data" // This might be automatically set by Axios
+          }
         }
       );
       setBPlan(resp.data.url);
@@ -183,7 +183,7 @@ const Screen31 = () => {
                 <div className="self-stretch relative leading-[20px]">
                   Capital Requirements
                 </div>
-                <select className="w-full bg-transparent border-none outline-none py-0 px-4 text-lg text-darkgray">
+                <select className="w-full px-4 py-0 text-lg bg-transparent border-none outline-none text-darkgray">
                   <option value="">Select Capital Requirement</option>
                   <option value="scaling">Scaling</option>
                   <option value="working">Working Capital</option>

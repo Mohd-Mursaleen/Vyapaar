@@ -14,13 +14,13 @@ const Screen21 = () => {
       formData.append("file", file); // 'file' is the key expected on the server side
 
       const resp = await axios.post(
-        "http://localhost:5001/api/convert",
+        "http://localhost:4048/api/convert",
         formData, // Send the form data
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data", // This might be automatically set by Axios
-          },
+            "Content-Type": "multipart/form-data" // This might be automatically set by Axios
+          }
         }
       );
       setBankStatement(resp.data.url);
@@ -38,7 +38,7 @@ const Screen21 = () => {
       console.log("Submitting data...");
       setData((prevUrls) => ({
         ...prevUrls,
-        financialDocumentsURL: bankStatement,
+        financialDocumentsURL: bankStatement
       }));
 
       // Here we assume you might have some asynchronous operation like API call
