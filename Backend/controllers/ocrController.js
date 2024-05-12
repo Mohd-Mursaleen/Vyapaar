@@ -8,22 +8,22 @@ const generation_config = {
   temperature: 1,
   top_p: 0.95,
   top_k: 0,
-  max_output_tokens: 8192
+  max_output_tokens: 8192,
 };
 
 const safetySettings = [
   {
     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE
-  }
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
 ];
 
 // Helper function to fetch image data and convert to base64
@@ -61,7 +61,7 @@ export const adharFrontPageOCR = async (req, res) => {
 
     const model = genAI.getGenerativeModel({
       model: "gemini-pro-vision",
-      safetySettings
+      safetySettings,
     });
     const imageParts = [
       {
@@ -119,7 +119,7 @@ export const adharBackPageOCR = async (req, res) => {
 
     const model = genAI.getGenerativeModel({
       model: "gemini-pro-vision",
-      safetySettings
+      safetySettings,
     });
     const imageParts = [
       {
@@ -160,16 +160,19 @@ export const panCardOCR = async (req, res) => {
     const { base64, mimeType } = await fetchImageAsBase64(imageUrl);
 
     const prompt = `
-      Process the provided image of the front side of a PAN card to extract textual data. Utilize optical character recognition (OCR) to convert the image into text. From the converted text, specifically extract the father's name and the PAN card number, which is a 10-character alphanumeric identifier. Once these details are identified, format them into a JSON object. The JSON should be structured as follows:
-{
-  "panCardNumber": "[Extracted PAN card number]",
-  "fatherName": "[Extracted father's name]"
-}
-Ensure that the OCR accurately captures all relevant text and that the final JSON output is precise and correctly formatted, providing clear and structured data.`;
+    Using the provided image of the back page of an PAN card, perform the following tasks:
+  
+    Apply optical character recognition (OCR) to convert the image into text.
+    Extract the following information from the recognized text:
+    Name
+    PAN Card Number (string)
+    Father Name (string)
+    Format the extracted information into a JSON object with the keys 'panCard', 'fatherName'.
+    Ensure the accuracy of text recognition and information extraction. The output should be in the JSON format as specified. `;
 
     const model = genAI.getGenerativeModel({
       model: "gemini-pro-vision",
-      safetySettings
+      safetySettings,
     });
     const imageParts = [
       {
@@ -182,8 +185,18 @@ Ensure that the OCR accurately captures all relevant text and that the final JSO
 
     const result = await model.generateContent([prompt, ...imageParts]);
     const response = await result.response;
-    const text = await response.text();
-    res.json({ result: JSON.parse(text) });
+    let text = await response.text(); // Changed from 'const' to 'let' to allow reassignment
+    console.log("text", text);
+    text = text
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    // Log the cleaned text to make sure it's correct
+    console.log("Cleaned text:", text);
+
+    const data = JSON.parse(text); // Parses the cleaned JSON string into a JavaScript object.
+    res.json({ result: data });
   } catch (error) {
     console.error("Failed to process image:", error);
     res.status(500).send({ error: "Failed to process image" });

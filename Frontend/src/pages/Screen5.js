@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Screen11 = () => {
   const navigateTo = useNavigate();
   const { data, setData } = useContext(DataContext);
-  const [name, setName] = useState("");
+
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const handleSubmit = (e) => {
@@ -16,7 +16,7 @@ const Screen11 = () => {
       console.log("Submitting data...");
       setData((prevData) => ({
         ...prevData,
-        accountHolderName: name,
+
         gender,
         dob,
       }));
@@ -80,6 +80,7 @@ const Screen11 = () => {
                   <input
                     className="w-full [border:none] [outline:none] bg-[transparent] self-stretch h-7 flex flex-row items-start justify-start py-0 px-4 box-border font-roboto text-lg text-gray-300 min-w-[235px]"
                     placeholder="Alexander"
+                    value={data.accountHolderName}
                     type="text"
                     onChange={(e) => {
                       setName(e.target.value);
@@ -141,7 +142,7 @@ const Screen11 = () => {
             </div>
             <div className="self-stretch rounded-lg flex flex-col items-start justify-start py-3.5 px-[15px] gap-[2px] font-roboto border-[1px] border-solid border-gainsboro-200">
               <div className="self-stretch relative leading-[28px]">
-                123-45-678
+                {data.aadharCardNumber}
               </div>
               <div className="flex flex-row items-start justify-start gap-[4px] text-smi text-dimgray font-poppins">
                 <img
@@ -155,7 +156,7 @@ const Screen11 = () => {
             </div>
             <div className="self-stretch rounded-lg flex flex-col items-start justify-start py-3.5 px-[15px] gap-[2px] font-roboto border-[1px] border-solid border-gainsboro-200">
               <div className="self-stretch relative leading-[28px]">
-                123-45-678
+                {data.panCardNumber}
               </div>
               <div className="flex flex-row items-start justify-start gap-[4px] text-smi text-dimgray font-poppins">
                 <img

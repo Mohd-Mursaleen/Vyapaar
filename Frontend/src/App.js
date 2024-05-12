@@ -5,6 +5,8 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Screen1 from "./pages/Screen1";
 import Screen2 from "./pages/Screen2";
 import Screen3 from "./pages/Screen3";
@@ -48,6 +50,8 @@ export function DataProvider({ children }) {
     ifscCode: "",
     accountNumber: "",
     businessPlan: "",
+    panCardNumber: "",
+    aadharCardNumber: "",
   }); // Example of a more: structured initial state
 
   return (
@@ -133,6 +137,7 @@ function App() {
         <Route path="/screen7" element={<Screen7 />} />
         <Route path="/screen8" element={<Screen8 />} />
       </Routes>
+      <ToastContainer position="top-center" />
     </DataProvider>
   );
 }

@@ -1,5 +1,6 @@
 import Business from "../model/loanModel.js";
 import cloudinary from "cloudinary";
+import { adharFrontPageOCR } from "./ocrController.js";
 
 export const post = async (req, res) => {
   const {
@@ -58,6 +59,7 @@ export const post = async (req, res) => {
     });
 
     await newBusiness.save(); // Save the new business to the database
+
     res.status(201).send("Business added successfully");
   } catch (error) {
     console.error("Error uploading files or saving the business:", error);

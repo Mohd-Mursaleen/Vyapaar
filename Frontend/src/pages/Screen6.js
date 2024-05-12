@@ -2,12 +2,13 @@ import { DataContext } from "../App";
 import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 const Screen21 = () => {
   const navigateTo = useNavigate();
   const [bankStatement, setBankStatement] = useState("");
   const { data, setData } = useContext(DataContext);
   const uploadGetLink = async (event) => {
+    const toastId = toast.loading("Uploading Documents...");
     try {
       const file = event.target.files[0];
       const formData = new FormData();
@@ -23,6 +24,12 @@ const Screen21 = () => {
           }
         }
       );
+      toast.update(toastId, {
+        render: "Document Uploaded",
+        type: "success",
+        isLoading: false,
+        autoClose: 5000,
+      });
       setBankStatement(resp.data.url);
       console.log(resp); // Log the response data from the server
     } catch (err) {
